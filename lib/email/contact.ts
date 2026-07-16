@@ -1,10 +1,38 @@
 export type ContactInput={name:string;email:string;subject:string;message:string;sourcePage:string;website?:string;startedAt?:number};
+export type ContactField="name"|"email"|"subject"|"message"|"sourcePage";
+export type ContactFieldErrors=Partial<Record<ContactField,string>>;
 export type Mail={from:string;to:string[];replyTo?:string;subject:string;html:string;text:string};
 export type MailClient={send(message:Mail):Promise<{id?:string}>};
+
 const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const clean=(value:unknown)=>String(value??"").trim().replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,"");
 const escape=(value:string)=>value.replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]!));
-export function validateContact(raw:Record<string,unknown>){const input:ContactInput={name:clean(raw.name),email:clean(raw.email).toLowerCase(),subject:clean(raw.subject),message:clean(raw.message),sourcePage:clean(raw.sourcePage)||"/contact",website:clean(raw.website),startedAt:Number(raw.startedAt)||0};const errors:string[]=[];if(input.website)errors.push("spam");if(input.startedAt&&Date.now()-input.startedAt<1500)errors.push("spam");if(input.name.length<2||input.name.length>100)errors.push("name");if(!emailPattern.test(input.email)||input.email.length>254)errors.push("email");if(input.subject.length<2||input.subject.length>160)errors.push("subject");if(input.message.length<10||input.message.length>5000)errors.push("message");if(input.sourcePage.length>200)errors.push("sourcePage");return {input,errors};}
+
+export function validateContact(raw:Record<string,unknown>){
+  const input:ContactInput={name:clean(raw.name),email:clean(raw.email).toLowerCase(),subject:clean(raw.subject),message:clean(raw.message),sourcePage:clean(raw.sourcePage)||"/contact",website:clean(raw.website),startedAt:Number(raw.startedAt)||0};
+  const fieldErrors:ContactFieldErrors={};
+  if(input.name.length<2)fieldErrors.name="Enter at least 2 characters.";else if(input.name.length>100)fieldErrors.name="Enter no more than 100 characters.";
+  if(!input.email)fieldErrors.email="Enter your email address.";else if(input.email.length>254)fieldErrors.email="Enter no more than 254 characters.";else if(!emailPattern.test(input.email))fieldErrors.email="Enter a valid email address.";
+  if(input.subject.length<2)fieldErrors.subject="Enter at least 2 characters.";else if(input.subject.length>160)fieldErrors.subject="Enter no more than 160 characters.";
+  if(input.message.length<10)fieldErrors.message="Enter at least 10 characters.";else if(input.message.length>5000)fieldErrors.message="Enter no more than 5000 characters.";
+  if(input.sourcePage.length>200)fieldErrors.sourcePage="Invalid source page.";
+  const spam=Boolean(input.website);
+  return {input,fieldErrors,errors:Object.keys(fieldErrors) as ContactField[],spam};
+}
+
 const shell=(content:string)=>`<!doctype html><html><body style="margin:0;background:#f3eee3;color:#20211f;font-family:Arial,sans-serif"><main style="max-width:640px;margin:auto;padding:40px 24px"><p style="color:#a65f43;letter-spacing:.12em;text-transform:uppercase">Sinda Khenine</p>${content}<p style="border-top:1px solid #b9aa97;padding-top:20px;color:#596359">Sinda Khenine · founder@skatalystai.com</p></main></body></html>`;
 export function contactMessages(input:ContactInput,from:string,to:string,submittedAt:string){const details=`Name: ${input.name}\nEmail: ${input.email}\nSubject: ${input.subject}\nSubmitted: ${submittedAt}\nSource: ${input.sourcePage}\n\n${input.message}`;return {notification:{from,to:[to],replyTo:input.email,subject:`Website inquiry from ${input.name}: ${input.subject}`,text:details,html:shell(`<h1>Website inquiry</h1><p><strong>Name:</strong> ${escape(input.name)}<br><strong>Email:</strong> ${escape(input.email)}<br><strong>Subject:</strong> ${escape(input.subject)}<br><strong>Submitted:</strong> ${escape(submittedAt)}<br><strong>Source:</strong> ${escape(input.sourcePage)}</p><div style="white-space:pre-wrap;border-left:3px solid #a65f43;padding-left:18px">${escape(input.message)}</div>`)},confirmation:{from,to:[input.email],subject:"Your message reached Sinda Khenine",text:`Hello ${input.name},\n\nThank you for your message. It has been received and I will review it as soon as possible.\n\nSinda Khenine\nfounder@skatalystai.com`,html:shell(`<h1>Thank you, ${escape(input.name)}.</h1><p>Your message has been received. I will review it as soon as possible.</p>`)}};}
-export async function submitContact(raw:Record<string,unknown>,client:MailClient,env:Record<string,string|undefined>){const {input,errors}=validateContact(raw);if(errors.length)return {ok:false,status:400,code:"invalid",resendEmailId:null};const from=env.RESEND_FROM_EMAIL,to=env.CONTACT_TO_EMAIL;if(!from||to!=="founder@skatalystai.com")return {ok:false,status:503,code:"unavailable",resendEmailId:null};const sender=from.includes("<")?from:`Sinda Khenine <${from}>`;const messages=contactMessages(input,sender,to,new Date().toISOString());let notification:{id?:string};try{notification=await client.send(messages.notification)}catch{return {ok:false,status:502,code:"send_failed",resendEmailId:null}}try{await client.send(messages.confirmation)}catch{return {ok:false,status:502,code:"confirmation_failed",resendEmailId:notification.id??null}}return {ok:true,status:200,code:"sent",resendEmailId:notification.id??null};}
+
+export async function submitContact(raw:Record<string,unknown>,client:MailClient,env:Record<string,string|undefined>){
+  const {input,errors,fieldErrors,spam}=validateContact(raw);
+  if(spam)return {ok:true,status:200,code:"spam" as const,resendEmailId:null,fieldErrors:{}};
+  if(errors.length)return {ok:false,status:400,code:"invalid" as const,resendEmailId:null,fieldErrors};
+  const from=env.RESEND_FROM_EMAIL,to=env.CONTACT_TO_EMAIL;
+  if(!from||to!=="founder@skatalystai.com")return {ok:false,status:503,code:"unavailable" as const,resendEmailId:null,fieldErrors:{}};
+  const sender=from.includes("<")?from:`Sinda Khenine <${from}>`;
+  const messages=contactMessages(input,sender,to,new Date().toISOString());
+  let notification:{id?:string};
+  try{notification=await client.send(messages.notification)}catch{return {ok:false,status:502,code:"send_failed" as const,resendEmailId:null,fieldErrors:{}}}
+  try{await client.send(messages.confirmation)}catch{return {ok:false,status:502,code:"confirmation_failed" as const,resendEmailId:notification.id??null,fieldErrors:{}}}
+  return {ok:true,status:200,code:"sent" as const,resendEmailId:notification.id??null,fieldErrors:{}};
+}
