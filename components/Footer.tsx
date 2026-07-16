@@ -1,0 +1,2 @@
+import {siteConfig} from "@/content/site/config";
+export function Footer(){return <footer><div className="shell footer-grid"><div><p className="brand">Sinda Khenine</p><p>Enterprise data engineering and reliable AI.</p></div><div><a href="/contact">Contact</a><a href="/resume">Resume</a><a href="/privacy">Privacy</a><a href="/imprint">Impressum</a></div><div><a href={siteConfig.companyUrl}>SKatalyst AI</a><span>Private Beta</span><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></div></div></footer>}

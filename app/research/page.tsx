@@ -1,0 +1,1 @@
+export const metadata={title:"Research",description:"Future research and PhD activity by Sinda Khenine."};export default function Page(){return <div className="shell page-wrap"><p className="eyebrow">Future research</p><h1>Research</h1><p className="lede">Research section in development.</p></div>}

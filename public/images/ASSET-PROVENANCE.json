@@ -1,0 +1,14 @@
+[
+  {
+    "path": "public/images/book-cover.jpg",
+    "sha256": "97430e867511dc85d2a37bb4c669c21ae32f3d7259ad22b97750b440606e136b",
+    "bytes": 263169,
+    "source": "approved book production cover"
+  },
+  {
+    "path": "public/images/book-square.jpg",
+    "sha256": "78e5f5bb97bc5def29ecd9139b9469818c76bc1ffeba4ddb3277a5244e2b8b48",
+    "bytes": 401810,
+    "source": "approved audiobook production cover"
+  }
+]
