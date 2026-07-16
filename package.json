@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@next/mdx": "latest",
+    "@vercel/analytics": "^2.0.1",
     "framer-motion": "latest",
     "next": "latest",
     "react": "latest",

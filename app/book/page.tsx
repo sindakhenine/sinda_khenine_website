@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {Layers} from "@/components/Layers";
 import {MediaVideo} from "@/components/MediaVideo";
+import {TrackedLink} from "@/components/TrackedLink";
 
 export const metadata={title:"The Subconscious Architect",description:"The book by Sinda Khenine: a Living Blueprint for understanding the hidden structures that shape how we think, decide, build relationships, and live.",openGraph:{images:["/assets/book_cover.jpg"]}};
 
@@ -14,7 +15,7 @@ const journey=[
 ];
 
 export default function Book(){const schema={"@context":"https://schema.org","@type":"Book",name:"The Subconscious Architect",url:`${process.env.NEXT_PUBLIC_SITE_URL||"https://sindakhenine.com"}/book`,author:{"@type":"Person",name:"Sinda Khenine"},abstract:"A Living Blueprint for understanding the hidden structures that shape how we think, decide, build relationships, and live."};return <>
-  <header className="shell book-hero editorial-book-hero"><div><p className="eyebrow">The Subconscious Architect</p><h1>The Subconscious Architect</h1><p className="hero-thesis">A Living Blueprint for understanding the hidden structures that shape how we think, decide, build relationships, and live.</p><Link className="button primary" href="#a-glimpse-inside">Open the First Pages</Link></div><Image className="cover editorial-cover" src="/assets/book_cover.jpg" alt="Cover of The Subconscious Architect by Sinda Khenine." width={1600} height={2560} sizes="(max-width: 800px) 76vw, 480px" priority/></header>
+  <header className="shell book-hero editorial-book-hero"><div><p className="eyebrow">The Subconscious Architect</p><h1>The Subconscious Architect</h1><p className="hero-thesis">A Living Blueprint for understanding the hidden structures that shape how we think, decide, build relationships, and live.</p><TrackedLink className="button primary" href="#a-glimpse-inside" eventName="book_excerpt_opened">Open the First Pages</TrackedLink></div><Image className="cover editorial-cover" src="/assets/book_cover.jpg" alt="Cover of The Subconscious Architect by Sinda Khenine." width={1600} height={2560} sizes="(max-width: 800px) 76vw, 480px" priority/></header>
 
   <section className="ink-section book-video-section book-teaser-prominent"><div className="wide-shell"><div className="section-head"><div><p className="eyebrow">Book teaser</p><h2>Enter the blueprint.</h2></div><p>A brief visual introduction to the house, its hidden structure, and the possibility of drawing differently.</p></div><MediaVideo src="/assets/book_teaser.mp4" poster="/assets/book-teaser-poster.jpg" label="Teaser for The Subconscious Architect"/></div></section>
 
