@@ -16,3 +16,6 @@ pnpm-debug.log*
 *.key
 *.tsbuildinfo
 /images/
+
+# Raw project media (source folder, not served)
+Projects_video/

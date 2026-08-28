@@ -52,7 +52,7 @@ export async function POST(request:NextRequest){
 
   const result=await submitContact(body,resendMailClient(apiKey),process.env);
   const category:Category=result.code==="send_failed"?"resend_notification":result.code==="confirmation_failed"?"resend_confirmation":result.code==="unavailable"?"configuration":"none";
-  const resendStatus=result.ok?"sent":result.code;
+  const resendStatus=result.ok?"sent":"resendErrorCategory" in result?result.resendErrorCategory:result.code;
   logContact({requestId,success:result.ok,errorCategory:category,rateLimitDecision:"allowed",resendStatus,successEmailId:result.ok?result.resendEmailId:null});
   return NextResponse.json({ok:result.ok,message:result.ok?"Your message has been sent.":"Your message could not be sent. Please try again later.",errors:{}},{status:result.status});
 }
