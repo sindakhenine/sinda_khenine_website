@@ -1,0 +1,23 @@
+import {setRequestLocale} from "next-intl/server";
+import {getCopy} from "@/i18n/server";
+import {createPageMetadata} from "@/lib/seo";
+import {Link} from "@/i18n/navigation";
+import {siteConfig} from "@/content/site/config";
+import {legalContact} from "@/content/site/legal";
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) { const {locale} = await params; return createPageMetadata("/privacy", {title: "Privacy", description: "How contact information and website usage data are handled on Sinda Khenine’s website."}, locale); }
+export default async function Privacy({params}: {params: Promise<{locale: string}>}){
+  const {locale} = await params; setRequestLocale(locale); const copy = getCopy(locale);
+return <article className="shell legal-page">
+  <p className="eyebrow">{copy("Website information")}</p><h1>{copy("Privacy")}</h1><p>{copy("This notice describes the data used when you visit this website or send an inquiry.")}</p>
+  <h2>{copy("Data controller and privacy contact")}</h2><p>{copy(legalContact.name)}<br/><a href={copy.href(`mailto:${siteConfig.email}`)}>{copy(siteConfig.email)}</a></p>
+  {legalContact.postalAddress.length > 0 && <address>{legalContact.postalAddress.map(line=><span key={line}>{copy(line)}<br/></span>)}</address>}
+  <p>{copy("Website contact information is also available in the ")}<Link href="/imprint">{copy("legal notice")}</Link>.</p>
+  <h2>{copy("Contact messages")}</h2><p>{copy("The contact form collects your name, email address, subject and message to receive and respond to your inquiry. It also records the source page. Resend delivers the message and an automatic confirmation. Please include only information needed for your inquiry.")}</p>
+  <p>{copy("Where an inquiry concerns a potential contract, processing serves the steps you request before entering a contract under Article 6(1)(b) GDPR. Other professional correspondence serves the legitimate interest in responding to inquiries under Article 6(1)(f) GDPR.")}</p>
+  <h2>{copy("Hosting and security")}</h2><p>{copy("Vercel hosts this website. Technical request data, such as IP addresses, request paths and browser information, may be processed to deliver pages, diagnose errors and protect the service. The contact endpoint uses a temporary hash of the request’s network address to limit repeated submissions. Application logs record delivery status and error categories without including contact-form values or message contents.")}</p>
+  <h2>{copy("Website analytics")}</h2><p>{copy("Vercel Web Analytics measures page views, referrers, approximate location, device information and selected button interactions to help understand how this website is used. Vercel describes the service as using aggregated statistics without third-party tracking cookies. Contact names, email addresses, subjects and message contents are not included in this website’s custom analytics events.")}</p><p>{copy("See ")}<a href={copy.href("https://vercel.com/docs/analytics/privacy-policy")}>{copy("Vercel’s Web Analytics privacy information")}</a> {copy(" for details.")}</p>
+  <h2>{copy("Display preferences")}</h2><p>{copy("This website remembers your display preference on your device. The language is determined by the page URL.")}</p>
+  <h2>{copy("Email updates")}</h2><p>{copy("This website does not currently offer an automatic newsletter subscription. The updates and book inquiry links open your email application. Sending an inquiry does not automatically subscribe you to a mailing list.")}</p>
+  <h2>{copy("Retention and your rights")}</h2><p>{copy("Correspondence is kept for the time needed to respond and maintain relevant business records, subject to applicable legal retention duties. Depending on the applicable legal conditions, you may request access, correction, deletion, restriction of processing or data portability, and object to processing based on legitimate interests. You may also complain to a data-protection supervisory authority. Send requests to ")}<a href={copy.href(`mailto:${siteConfig.email}`)}>{copy(siteConfig.email)}</a>.</p>
+  <h2>{copy("Service providers and external links")}</h2><p>{copy("Vercel and Resend may process data outside the European Economic Area. Their published privacy and data-processing documents describe their locations and transfer safeguards: ")}<a href={copy.href("https://vercel.com/legal/privacy-policy")}>{copy("Vercel Privacy Policy")}</a> {copy(" and ")}<a href={copy.href("https://resend.com/legal/privacy-policy")}>{copy("Resend Privacy Policy")}</a>.</p><p>{copy("Videos and images are served through this website. External websites, including LinkedIn, X and conference sites, have their own privacy practices.")}</p>
+</article>}

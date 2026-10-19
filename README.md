@@ -66,3 +66,37 @@ npm run build
 ```
 
 The contact route requires a verified Resend sending domain plus `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, and `CONTACT_TO_EMAIL`. Updates signup remains disabled until persistent single-use double-opt-in storage is configured. See the email, Vercel, domain, and production-readiness guides before deployment.
+
+## Languages and appearance
+
+The public site has English (unprefixed URLs), German (`/de`) and French (`/fr`)
+versions. Page modules live under `app/[locale]`. `next-intl` provides routing and
+request-scoped language context; `i18n/routing.ts` keeps URL language explicit
+instead of redirecting visitors based on browser settings. Language links use a
+full document navigation so the HTML language and saved theme apply together.
+API routes, images, PDF downloads, robots, sitemap and Bing XML remain at the root.
+
+Copy is stored in `i18n/messages/{en,de,fr}.json`, with stable `copyKey` identifiers
+for the English source phrases. Update all three catalogues when editing a phrase.
+`getCopy` handles server prose; `useCopy` handles interactive components. Only the
+small `i18n/client-messages.ts` subset is sent to client components. Technical
+identifiers, product names, original screenshots, videos and the English resume
+PDF retain their original form. German and French prose was prepared with machine
+translation and editorial corrections, including the About story, navigation,
+identity and legal-page headings. Translations are saved locally; no translation
+service runs when a visitor opens the website.
+
+Each page has its own localized metadata, canonical and `hreflang` alternatives.
+The sitemap lists 69 URLs (23 pages × 3 languages). Keep all three variants in the
+sitemap when adding a public route.
+
+The theme uses the visitor's system preference until a light/dark choice is saved
+under `sinda-theme` in local storage. `lib/theme.ts` applies it before first paint;
+`components/ThemeToggle.tsx` handles the control and system/storage changes.
+Colors and responsive language controls are in `app/globals.css`.
+
+For a local production smoke test, run `npm run build`, then
+`npm run start -- --hostname localhost --port 3015` and visit
+`http://localhost:3015`. Use the matching hostname: Next.js 16.2's production
+proxy can loop when the listener and its internal worker disagree on localhost
+versus 127.0.0.1. This does not affect the normal development preview.

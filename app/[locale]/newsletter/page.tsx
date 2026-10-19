@@ -1,0 +1,6 @@
+import {setRequestLocale} from "next-intl/server";
+import {getCopy} from "@/i18n/server";
+import {createPageMetadata} from "@/lib/seo";
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) { const {locale} = await params; return createPageMetadata("/newsletter", {title: "Updates", description: "Occasional updates from Sinda Khenine."}, locale); }export default async function Newsletter({params}: {params: Promise<{locale: string}>}){
+  const {locale} = await params; setRequestLocale(locale); const copy = getCopy(locale);
+return <div className="shell page-wrap narrow"><p className="eyebrow">{copy("Updates")}</p><h1>{copy("Follow the work")}</h1><p className="lede">{copy("Book news, technical writing, conference sessions, and selected project launches. Follow along on LinkedIn or X, or send an email about a topic that interests you.")}</p><a className="button primary" href={copy.href("mailto:founder@skatalystai.com?subject=Website%20updates")}>{copy("Ask about updates")}</a><div className="actions"><a href={copy.href("https://www.linkedin.com/in/sinda-khenine-67545614b/")}>{copy("LinkedIn")}</a><a href={copy.href("https://x.com/SKatalystAI")}>{copy("X · @SKatalystAI")}</a></div></div>}

@@ -2,6 +2,8 @@ import {afterEach,describe,expect,it,vi} from "vitest";
 import {cleanup,fireEvent,render,screen,waitFor} from "@testing-library/react";
 
 vi.mock("@vercel/analytics",()=>({track:vi.fn()}));
+import {NextIntlClientProvider} from "next-intl";
+import messages from "../i18n/messages/en.json";
 import {ContactForm} from "../components/ContactForm";
 
 afterEach(()=>{cleanup();vi.restoreAllMocks()});
@@ -16,7 +18,7 @@ function completeForm(){
 describe("contact form error mapping",()=>{
   it("sends JSON with the expected payload and highlights the server field",async()=>{
     const fetchMock=vi.spyOn(globalThis,"fetch").mockResolvedValue(new Response(JSON.stringify({ok:false,message:"Please check the highlighted information.",errors:{name:"Enter at least 2 characters."}}),{status:400,headers:{"Content-Type":"application/json"}}));
-    render(<ContactForm/>);completeForm();fireEvent.submit(screen.getByRole("button",{name:"Send Message"}).closest("form")!);
+    render(<NextIntlClientProvider locale="en" messages={{copy:messages}}><ContactForm/></NextIntlClientProvider>);completeForm();fireEvent.submit(screen.getByRole("button",{name:"Send Message"}).closest("form")!);
     await waitFor(()=>expect(screen.getByLabelText("Name").getAttribute("aria-invalid")).toBe("true"));
     expect(screen.getByText("Enter at least 2 characters.")).toBeTruthy();
     const init=fetchMock.mock.calls[0][1]!;expect((init.headers as Record<string,string>)["Content-Type"]).toBe("application/json");
@@ -25,7 +27,16 @@ describe("contact form error mapping",()=>{
 
   it("does not claim fields are highlighted when the server supplies none",async()=>{
     vi.spyOn(globalThis,"fetch").mockResolvedValue(new Response(JSON.stringify({ok:false,message:"Please check the highlighted information.",errors:{}}),{status:400,headers:{"Content-Type":"application/json"}}));
-    render(<ContactForm/>);completeForm();fireEvent.submit(screen.getByRole("button",{name:"Send Message"}).closest("form")!);
+    render(<NextIntlClientProvider locale="en" messages={{copy:messages}}><ContactForm/></NextIntlClientProvider>);completeForm();fireEvent.submit(screen.getByRole("button",{name:"Send Message"}).closest("form")!);
     expect(await screen.findByText("The form could not be validated. Please reload the page and try again.")).toBeTruthy();
   });
+});
+
+it("shows French validation feedback without sending a real email", async () => {
+  const {getCopyMessages} = await import("../i18n/server");
+  vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({ok:false,message:"Please check the highlighted information.",errors:{email:"Enter a valid email address."}}), {status:400,headers:{"Content-Type":"application/json"}}));
+  render(<NextIntlClientProvider locale="fr" messages={{copy:getCopyMessages("fr")}}><ContactForm/></NextIntlClientProvider>);
+  fireEvent.submit(screen.getByRole("button", {name:"Envoyer le message"}).closest("form")!);
+  expect(await screen.findByText("Veuillez saisir une adresse e-mail valide.")).toBeTruthy();
+  expect(screen.getByLabelText("E-mail").getAttribute("aria-invalid")).toBe("true");
 });

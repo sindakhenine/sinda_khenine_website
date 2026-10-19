@@ -1,4 +1,6 @@
 "use client";
+import {useCopy} from "@/i18n/use-copy";
+
 
 import {useState} from "react";
 
@@ -11,22 +13,24 @@ const layers = [
 ] as const;
 
 export function Layers() {
+  const copy = useCopy();
+
   const [active, setActive] = useState(0);
 
   return (
     <div className="blueprint-visual">
-      <div className="blueprint-house" role="group" aria-label="Living Blueprint layers">
+      <div className="blueprint-house" role="group" aria-label={copy("Living Blueprint layers")}>
         {layers.map(([name, description], index) => (
           <button className={`blueprint-layer blueprint-layer-${index + 1}`} aria-pressed={active === index} onClick={() => setActive(index)} key={name}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <strong>{name}</strong>
-            <small>{description}</small>
+            <span>{copy(String(index + 1).padStart(2, "0"))}</span>
+            <strong>{copy(name)}</strong>
+            <small>{copy(description)}</small>
           </button>
         ))}
       </div>
       <div className="blueprint-caption" aria-live="polite">
-        <span>{String(active + 1).padStart(2, "0")}</span>
-        <p><strong>{layers[active][0]}</strong>{layers[active][1]}</p>
+        <span>{copy(String(active + 1).padStart(2, "0"))}</span>
+        <p><strong>{copy(layers[active][0])}</strong>{copy(layers[active][1])}</p>
       </div>
     </div>
   );

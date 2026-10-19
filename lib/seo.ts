@@ -1,4 +1,6 @@
 import type {Metadata} from "next";
+import {localizedPath, locales} from "@/i18n/routing";
+import {getCopy} from "@/i18n/server";
 import {siteConfig} from "@/content/site/config";
 
 export function canonicalUrl(path = "/") {
@@ -7,18 +9,23 @@ export function canonicalUrl(path = "/") {
 
 type PageDetails = {title: string; description: string; image?: string};
 
-export function createPageMetadata(path: string, {title, description, image = "/assets/sinda_picture-960.jpg"}: PageDetails): Metadata {
+export function createPageMetadata(path: string, {title, description, image = "/assets/sinda_picture-960.jpg"}: PageDetails, locale = "en"): Metadata {
+  const t = getCopy(locale);
+  title = t(title); description = t(description);
+  const url = canonicalUrl(localizedPath(path, locale));
   const fullTitle = path === "/" ? title : `${title} | ${siteConfig.name}`;
   return {
     title: {absolute: fullTitle},
     description,
-    alternates: {canonical: canonicalUrl(path)},
+    alternates: {canonical: url, languages: {...Object.fromEntries(locales.map(language => [language, canonicalUrl(localizedPath(path, language))])), "x-default": canonicalUrl(path)}},
     openGraph: {
       type: "website",
       siteName: siteConfig.name,
       title: fullTitle,
       description,
-      url: canonicalUrl(path),
+      url,
+      locale: {en: "en_US", de: "de_DE", fr: "fr_FR"}[locale],
+      alternateLocale: locales.filter(language => language !== locale).map(language => ({en: "en_US", de: "de_DE", fr: "fr_FR"}[language])),
       images: [{url: canonicalUrl(image)}],
     },
     twitter: {card: "summary_large_image", title: fullTitle, description, images: [canonicalUrl(image)]},

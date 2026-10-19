@@ -1,4 +1,6 @@
 "use client";
+import {useCopy} from "@/i18n/use-copy";
+
 import Image from "next/image";
 import {useEffect,useRef} from "react";
 
@@ -10,6 +12,8 @@ import {useEffect,useRef} from "react";
   Reduced motion: the variable is pinned to the revealed state and no scroll listener is attached.
 */
 export function CodePortrait({photo,texture,tile,width,height,alt}:{photo:string;texture:string;tile:string;width:number;height:number;alt:string}){
+  const copy = useCopy();
+
   const root=useRef<HTMLDivElement>(null);
   useEffect(()=>{
     const el=root.current; if(!el) return;
@@ -40,8 +44,8 @@ export function CodePortrait({photo,texture,tile,width,height,alt}:{photo:string
   return <div className="code-portrait" ref={root} style={{"--reveal":0,"--tile":`url(${tile})`} as React.CSSProperties}>
     <div className="code-portrait-halo" aria-hidden="true"/>
     <div className="code-portrait-frame">
-      <Image className="code-portrait-photo" src={photo} alt={alt} width={width} height={height} sizes="(max-width: 900px) 92vw, 520px" priority/>
-      <Image className="code-portrait-texture" src={texture} alt="" aria-hidden="true" width={1632} height={2048} sizes="(max-width: 900px) 92vw, 520px" priority unoptimized/>
+      <Image className="code-portrait-photo" src={photo} alt={copy(alt)} width={width} height={height} sizes="(max-width: 900px) 92vw, 520px" priority/>
+      <Image className="code-portrait-texture" src={texture} alt={copy("")} aria-hidden="true" width={1632} height={2048} sizes="(max-width: 900px) 92vw, 520px" priority unoptimized/>
     </div>
   </div>;
 }

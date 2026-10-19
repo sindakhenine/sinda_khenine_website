@@ -1,1 +1,1 @@
-import {defineConfig} from "vitest/config";export default defineConfig({resolve:{alias:{"@":new URL(".",import.meta.url).pathname}},test:{environment:"jsdom"}})
+import {defineConfig} from "vitest/config";export default defineConfig({resolve:{alias:{"@":new URL(".",import.meta.url).pathname}},test:{environment:"jsdom",server:{deps:{inline:["next-intl"]}}}})
