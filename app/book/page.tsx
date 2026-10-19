@@ -1,10 +1,11 @@
+import {canonicalUrl, createPageMetadata, entityIds, serializeJsonLd} from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import {Layers} from "@/components/Layers";
 import {MediaVideo} from "@/components/MediaVideo";
 import {TrackedLink} from "@/components/TrackedLink";
 
-export const metadata={title:"The Subconscious Architect",description:"The book by Sinda Khenine: a Living Blueprint for understanding the hidden structures that shape how we think, decide, build relationships, and live.",openGraph:{images:["/assets/book_cover.jpg"]}};
+export const metadata = createPageMetadata("/book", {title: "The Subconscious Architect", description: "The book by Sinda Khenine: a Living Blueprint for understanding the hidden structures that shape how we think, decide, build relationships, and live.", image: "/assets/book_cover.jpg"});
 
 const readers=["Professionals","Founders","Engineers","People rebuilding after change","Readers interested in psychology without pop psychology"];
 const journey=[
@@ -14,8 +15,8 @@ const journey=[
   {title:"Build lasting change",copy:"Create support for change that can hold under the weight of real life."}
 ];
 
-export default function Book(){const schema={"@context":"https://schema.org","@type":"Book",name:"The Subconscious Architect",url:`${process.env.NEXT_PUBLIC_SITE_URL||"https://sindakhenine.com"}/book`,author:{"@type":"Person",name:"Sinda Khenine"},abstract:"A Living Blueprint for understanding the hidden structures that shape how we think, decide, build relationships, and live."};return <>
-  <header className="shell book-hero editorial-book-hero"><div><p className="eyebrow">The Subconscious Architect</p><h1>The Subconscious Architect</h1><p className="hero-thesis">A Living Blueprint for understanding the hidden structures that shape how we think, decide, build relationships, and live.</p><TrackedLink className="button primary" href="#a-glimpse-inside" eventName="book_excerpt_opened">Open the First Pages</TrackedLink></div><Image className="cover editorial-cover" src="/assets/book_cover.jpg" alt="Cover of The Subconscious Architect by Sinda Khenine." width={1600} height={2560} sizes="(max-width: 800px) 76vw, 480px" priority/></header>
+export default function Book(){const schema={"@context":"https://schema.org","@type":"Book",name:"The Subconscious Architect","@id":canonicalUrl("/book#book"),url:canonicalUrl("/book"),author:{"@id":entityIds.person,"@type":"Person",name:"Sinda Khenine"},abstract:"A Living Blueprint for understanding the hidden structures that shape how we think, decide, build relationships, and live."};return <>
+  <header className="shell book-hero editorial-book-hero"><div><p className="eyebrow">The Subconscious Architect</p><h1>The Subconscious Architect</h1><p className="hero-thesis">A Living Blueprint for understanding the hidden structures that shape how we think, decide, build relationships, and live.</p><TrackedLink className="button primary" href="#a-glimpse-inside" eventName="book_excerpt_opened">Read selected excerpts</TrackedLink></div><Image className="cover editorial-cover" src="/assets/book_cover.jpg" alt="Cover of The Subconscious Architect by Sinda Khenine." width={1600} height={2560} sizes="(max-width: 800px) 76vw, 480px" priority/></header>
 
   <section className="ink-section book-video-section book-teaser-prominent"><div className="wide-shell"><div className="section-head"><div><p className="eyebrow">Book teaser</p><h2>Enter the blueprint.</h2></div><p>A brief visual introduction to the house, its hidden structure, and the possibility of drawing differently.</p></div><MediaVideo src="/assets/book_teaser.mp4" poster="/assets/book-teaser-poster.jpg" label="Teaser for The Subconscious Architect"/></div></section>
 
@@ -29,6 +30,6 @@ export default function Book(){const schema={"@context":"https://schema.org","@t
 
   <section className="ink-section about-book-author"><div className="shell author-portrait-layout"><Image src="/assets/sinda_picture-960.jpg" alt="Portrait of Sinda Khenine." width={960} height={960} sizes="(max-width: 800px) 88vw, 420px"/><div><p className="eyebrow">About the author</p><h2>Why I wrote this book.</h2><p>I wrote this book because I wanted a clearer language for the patterns we inherit, protect, and repeat. The Living Blueprint grew from my need to understand those structures honestly, without reducing a life to a slogan or a quick fix.</p><Link className="button" href="/about">About Sinda</Link></div></div></section>
 
-  <section><div className="shell publication-panel book-publication-close"><div><p className="eyebrow">Publication status</p><h2>Coming 2026</h2><p>The book is currently in publication preparation.</p></div><div className="publication-cover-mark"><Image src="/assets/book_cover-720.jpg" alt="Cover of The Subconscious Architect by Sinda Khenine." width={720} height={1152}/><a className="button primary" href="mailto:founder@skatalystai.com?subject=Notify%20me%20about%20The%20Subconscious%20Architect">Notify Me</a></div></div></section>
-  <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/>
+  <section><div className="shell publication-panel book-publication-close"><div><p className="eyebrow">Publication status</p><h2>Coming 2026</h2><p>The book is currently in publication preparation.</p></div><div className="publication-cover-mark"><Image src="/assets/book_cover-720.jpg" alt="Cover of The Subconscious Architect by Sinda Khenine." width={720} height={1152}/><a className="button primary" href="mailto:founder@skatalystai.com?subject=Publication%20inquiry%20-%20The%20Subconscious%20Architect">Ask about publication</a></div></div></section>
+  <script type="application/ld+json" dangerouslySetInnerHTML={{__html:serializeJsonLd(schema)}}/>
   </>}

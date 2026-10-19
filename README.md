@@ -31,8 +31,30 @@ Production uses the Vercel Git integration for
 and production deployment for `https://sindakhenine.com`. Confirm the Vercel
 deployment status and the live pages and PDF after each release.
 
-This setup was verified in September 2026. Earlier deployment reports describe
+This setup was verified in the Vercel dashboard on 19 October 2026. The project
+uses the repository root, the Next.js framework preset, Node.js 24.x and no build
+or output overrides. `npm run build` produces `.next`; `public/` contains files
+served directly from the site root. The custom domain is `sindakhenine.com`.
+Earlier deployment reports describe
 the initial setup and may still contain historical, pre-launch status notes.
+
+## Search metadata and Bing verification
+
+`public/BingSiteAuth.xml` is the unmodified Bing ownership file and must remain
+available at `https://sindakhenine.com/BingSiteAuth.xml`. It is not an application
+credential and is intentionally public. Complete Bing's Verify step in the
+Webmaster Tools account after confirming this URL serves XML with HTTP 200.
+
+The canonical origin is fixed to `https://sindakhenine.com` in
+`content/site/config.ts`; the legacy `NEXT_PUBLIC_SITE_URL` variable is ignored.
+This prevents local or preview values from pointing search engines at another
+domain. Page metadata and the connected Person, Organization, WebSite and About
+ProfilePage schemas are maintained in `lib/seo.ts` and the page modules.
+SKatalyst AI is linked as an external organization founded by Sinda Khenine;
+this repository does not deploy its website or application.
+
+Keep `app/sitemap.ts` aligned with public routes and project records. The
+last-modified date should reflect a content revision, not each sitemap request.
 
 ## Validation
 

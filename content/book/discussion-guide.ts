@@ -1,0 +1,20 @@
+export const discussionQuestions = [
+  "What changes when a pattern is viewed as a once-useful structure?",
+  "Where does the book distinguish reading from fixing?",
+  "Which metaphor clarified something, and which did not?",
+  "Ground: Which inherited rule is easiest to see only in hindsight?",
+  "Ground: How can a person honor where they came from without preserving every rule?",
+  "Frame: What makes an identity contract load-bearing?",
+  "Frame: What support must exist before an old beam changes?",
+  "Wiring: What is gained by treating a trigger as information?",
+  "Wiring: Why rehearse a response in calm?",
+  "Rooms: Which daily pattern reveals the structure most clearly?",
+  "Rooms: What does one-room-at-a-time protect?",
+  "Facade: When is a facade a boundary rather than a deception?",
+  "Facade: What creates the cost of maintaining two houses?",
+  "Where does the book refuse overnight transformation?",
+  "How does engineering language help or limit the discussion?",
+  "What does “renovation in residence” require in ordinary life?",
+  "Which exercise would you try, revise or decline?",
+  "What would holding the pencil mean without controlling every outcome?"
+] as const;

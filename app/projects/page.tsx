@@ -1,5 +1,6 @@
+import {createPageMetadata} from "@/lib/seo";
 import Image from "next/image";import Link from "next/link";import {ProductFrame} from "@/components/ProductFrame";import {projects,projectHref} from "@/content/projects/projects";import {LAST_UPDATED} from "@/content/site/config";import {magicalBookCoverBlur} from "@/content/projects/magicalBookBlur";
-export const metadata={title:"Projects",description:"Four projects by Sinda Khenine: SKatalyst AI, a founder-led agentic data platform; The Magical Book, an interactive AI experiment; Reha, a healthcare workflow prototype; and Grok Arena, a multi-agent systems experiment."};
+export const metadata = createPageMetadata("/projects", {title: "Projects", description: "Five projects by Sinda Khenine: SKatalyst AI, One-Person AI Company, Reha, Grok Arena and The Magical Book. Explore the systems and engineering behind them."});
 export default function Projects(){
   const magical=projects.find(p=>p.slug==="the-magical-book")!;const skatalyst=projects.find(p=>p.slug==="skatalyst-ai")!;const reha=projects.find(p=>p.slug==="reha")!;const grok=projects.find(p=>p.slug==="grok-arena")!;const opac=projects.find(p=>p.slug==="one-person-ai-company")!;
   return <div className="projects-page">

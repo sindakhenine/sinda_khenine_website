@@ -1,5 +1,6 @@
+import {createPageMetadata} from "@/lib/seo";
 import Image from "next/image";import Link from "next/link";import {MagicalBookDemo,WatchDemoButton} from "@/components/MagicalBookDemo";import {magicalBookHeroBlur} from "@/content/projects/magicalBookBlur";
-export const metadata={title:"The Magical Book",description:"ChronoAtlas: an interactive magical book that turns history into an explorable experience across ten ancient civilizations. Generative video, cursor-aware interaction and a 23-state web experience."};
+export const metadata = createPageMetadata("/projects/the-magical-book", {title: "The Magical Book", description: "ChronoAtlas: an interactive magical book that turns history into an explorable experience across ten ancient civilizations. Generative video, cursor-aware interaction and a 23-state web experience."});
 const M="/media/magical-book";
 const worlds=[
   {id:"carthage",name:"Carthage",period:"c. 9th to 2nd century BCE",tagline:"Masters of the Mediterranean."},

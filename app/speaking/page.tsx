@@ -1,8 +1,9 @@
+import {createPageMetadata} from "@/lib/seo";
 import Image from "next/image";import {ConferenceVideo} from "@/components/ConferenceVideo";import {TrackedLink} from "@/components/TrackedLink";
-export const metadata={title:"Speaking",description:"Conference sessions by Sinda Khenine on enterprise data, document understanding, context engineering and reliable AI agents."};
+export const metadata = createPageMetadata("/speaking", {title: "Speaking", description: "Conference sessions by Sinda Khenine on enterprise data, document understanding, context engineering and reliable AI agents."});
 const featured=[
 {place:"Berlin",year:"2026",status:"Upcoming",title:"Context Engineering Is the New Prompt Engineering",summary:"Practical patterns for selecting, securing, refreshing, validating, and observing the context used by enterprise AI agents."},
-{place:"Berlin",year:"2026",status:"Upcoming",title:"From Context to Action",summary:"Bounded reasoning, tool contracts, action authorization, trajectory evaluation, and graduated autonomy."},
+{place:"Berlin",year:"2026",status:"Upcoming",title:"From Answering to Acting",summary:"Bounded reasoning, tool contracts, action authorization, trajectory evaluation, and graduated autonomy."},
 {place:"Munich",year:"2026",status:"Completed",title:"Document Understanding at Scale",summary:"Low-quality images, noisy OCR, changing layouts, modular extraction, validation, and human review."}
 ];
 const history=[

@@ -1,3 +1,25 @@
-import type {Metadata} from "next";import "./globals.css";import {Analytics} from "@vercel/analytics/next";import {Header} from "@/components/Header";import {Footer} from "@/components/Footer";import {siteConfig} from "@/content/site/config";
-export const metadata:Metadata={metadataBase:new URL(siteConfig.url),title:{default:siteConfig.title,template:"%s | Sinda Khenine"},description:siteConfig.description,alternates:{canonical:"./"},openGraph:{type:"website",siteName:"Sinda Khenine",title:siteConfig.title,description:siteConfig.description,images:[{url:"/assets/sinda_picture-960.jpg",width:960,height:960,alt:"Portrait of Sinda Khenine."}]},twitter:{card:"summary_large_image",title:siteConfig.title,description:siteConfig.description,images:["/assets/sinda_picture-960.jpg"]},icons:{icon:"/icon.svg"}};
-export default function RootLayout({children}:{children:React.ReactNode}){const person={"@context":"https://schema.org","@type":"Person",name:"Sinda Khenine",jobTitle:siteConfig.headline,sameAs:[siteConfig.social.linkedin,siteConfig.social.x],description:siteConfig.description,url:siteConfig.url,knowsAbout:["AI orchestration","Frontier AI coding agents","MCP and bounded tool use","Enterprise data architecture","Business intelligence","Reliable AI agents","Context engineering","Document understanding","Autonomous agent systems","Product building","Creative technology"]};const website={"@context":"https://schema.org","@type":"WebSite",name:"Sinda Khenine",url:siteConfig.url,description:siteConfig.description};return <html lang="en"><body><a className="skip-link" href="#main">Skip to content</a><Header/><main id="main">{children}</main><Footer/><Analytics/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify([person,website])}}/></body></html>}
+import type {Metadata} from "next";
+import "./globals.css";
+import {Analytics} from "@vercel/analytics/next";
+import {Header} from "@/components/Header";
+import {Footer} from "@/components/Footer";
+import {siteConfig} from "@/content/site/config";
+import {createPageMetadata, identityGraph, serializeJsonLd} from "@/lib/seo";
+
+export const metadata: Metadata = {
+  ...createPageMetadata("/", {title: siteConfig.title, description: siteConfig.description}),
+  metadataBase: new URL(siteConfig.url),
+  title: {default: siteConfig.title, template: "%s | Sinda Khenine"},
+  icons: {icon: "/icon.svg"},
+};
+
+export default function RootLayout({children}: {children: React.ReactNode}) {
+  return <html lang="en"><body>
+    <a className="skip-link" href="#main">Skip to content</a>
+    <Header/>
+    <main id="main">{children}</main>
+    <Footer/>
+    <Analytics/>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{__html: serializeJsonLd(identityGraph)}}/>
+  </body></html>;
+}

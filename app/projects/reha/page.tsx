@@ -1,5 +1,6 @@
+import {createPageMetadata} from "@/lib/seo";
 import Image from "next/image";import Link from "next/link";import {ProductFrame} from "@/components/ProductFrame";
-export const metadata={title:"Reha",description:"Reha: a digital rehabilitation experience designed from the patient journey outward. A three-role prototype (patient, therapist, administration) built from first-hand observation and proposed to rehabilitation organizations. Never deployed in clinical operation."};
+export const metadata = createPageMetadata("/projects/reha", {title: "Reha", description: "Reha: a digital rehabilitation experience designed from the patient journey outward. A three-role prototype (patient, therapist, administration) built from first-hand observation and proposed to rehabilitation organizations. Never deployed in clinical operation."});
 const M="/media/reha";
 function Phone({src,alt,label}:{src:string;alt:string;label:string}){return <figure className="rh-phone"><Image src={src} alt={alt} width={1170} height={2532} sizes="(max-width: 700px) 60vw, 260px" loading="lazy"/><figcaption>{label}</figcaption></figure>}
 const moments=["Therapies","Appointments","Documents","Assessments","Goals","Meals","Free-time offers","Rooms and floors","Communication","Progress"];

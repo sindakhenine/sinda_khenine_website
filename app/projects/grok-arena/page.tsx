@@ -1,5 +1,6 @@
+import {createPageMetadata} from "@/lib/seo";
 import Image from "next/image";import Link from "next/link";import {MagicalBookDemo,WatchDemoButton} from "@/components/MagicalBookDemo";
-export const metadata={title:"Grok Arena",description:"Grok Arena: an experimental arena for autonomous AI agents. Four players, six system agents, one shared world, role-scoped MCP tools, a deterministic engine and a 3D control room. Evidence-led case study."};
+export const metadata = createPageMetadata("/projects/grok-arena", {title: "Grok Arena", description: "Grok Arena: an experimental arena for autonomous AI agents. Four players, six system agents, one shared world, role-scoped MCP tools, a deterministic engine and a 3D control room. Evidence-led case study."});
 const M="/media/grok-arena";
 const players=[
   {id:"Alpha",bias:"Aggressive and opportunistic",note:"Pressure the leader, take the opening. A starting bias, not a script."},

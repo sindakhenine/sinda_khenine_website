@@ -1,5 +1,6 @@
+import {createPageMetadata} from "@/lib/seo";
 import Image from "next/image";import Link from "next/link";import {MagicalBookDemo,WatchDemoButton} from "@/components/MagicalBookDemo";
-export const metadata={title:"One-Person AI Company",description:"One-Person AI Company: a 24-hour experiment in delegating a real business objective to an AI manager (OpenClaw), an AI researcher (Grok Bot), deterministic code and PostgreSQL, watched from a live control room. Evidence-led case study with verified numbers, failures and a truth table."};
+export const metadata = createPageMetadata("/projects/one-person-ai-company", {title: "One-Person AI Company", description: "Sinda Khenine’s 24-hour experiment in AI orchestration with OpenClaw, Grok Bot and PostgreSQL. Read the results, human interventions and lessons."});
 const M="/media/one-person-ai-company";
 type ShotProps={src:string;w:number;h:number;alt:string;path:string;cap?:string;sizes?:string;priority?:boolean};
 function Shot({src,w,h,alt,path,cap,sizes="(max-width:900px) 100vw, 60vw",priority}:ShotProps){

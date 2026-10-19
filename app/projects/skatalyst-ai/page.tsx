@@ -1,5 +1,6 @@
+import {createPageMetadata} from "@/lib/seo";
 import Link from "next/link";import {ProductFrame} from "@/components/ProductFrame";import {TrackedLink} from "@/components/TrackedLink";
-export const metadata={title:"SKatalyst AI",description:"SKatalyst AI: an agentic platform that turns fragmented organizational data into persistent structured context and generates validated applications from it. Architecture, lifecycle, validation and engineering."};
+export const metadata = createPageMetadata("/projects/skatalyst-ai", {title: "SKatalyst AI · Engineering Case Study", description: "How Sinda Khenine is building SKatalyst AI: an agentic platform for structured business context, validated applications and customer-owned software."});
 const M="/media/skatalyst";
 const sources=["Excel files","PDFs","Word documents","SharePoint","Google Drive","OneDrive","Databases","Cloud storage","Databricks","Reports","Images","Internal tools","APIs","CSV exports"];
 const pipeline=[
