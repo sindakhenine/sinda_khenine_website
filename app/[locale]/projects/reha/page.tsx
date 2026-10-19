@@ -80,7 +80,7 @@ return <div className="rh-page">
       <Link className="rh-back" href="/projects">{copy("← All projects")}</Link>
       <p className="rh-eyebrow">{copy("Project 03 · Product prototype · Healthcare digitalization concept · 2026")}</p>
       <h1 id="rh-title">{copy("Reha")}</h1>
-      <p className="rh-statement">{copy("A digital rehabilitation experience designed from the patient journey outward.")}</p>
+      <p className="rh-statement">{copy("A rehabilitation planner built from a patient’s perspective.")}</p>
       <p className="rh-lede">{copy("Rehabilitation is weeks of therapies, appointments, rooms, documents, meals and small daily decisions, held together mostly on paper. After experiencing that workflow first-hand, I modelled it, designed a connected weekly plan for patients and clinic teams, and built a working prototype, RehaConnect, that I later proposed to rehabilitation organizations.")}</p>
       <p className="rh-flag"><strong>{copy("Prototype, not a product in use.")}</strong> {copy(" Built with test data, demonstrated locally, presented as a concept. It was never deployed in live clinical operation and never used by real patients or staff.")}</p>
     </div>
@@ -184,7 +184,7 @@ return <div className="rh-page">
   <section className="rh-section rh-model" aria-labelledby="rh-model-title">
     <div className="shell">
       <p className="rh-index">{copy("07 · Data and system model")}</p>
-      <h2 id="rh-model-title">{copy("The stay as a domain, not a set of screens.")}</h2>
+      <h2 id="rh-model-title">{copy("Modelling the rehabilitation stay.")}</h2>
       <p className="rh-lede">{copy("Four entities are persisted by the backend; the rest of the domain is typed on the frontend and fed from static fixtures. The split is exactly where prototype ends and product would begin.")}</p>
       <div className="rh-model-grid">
         <div className="rh-model-col"><h3>{copy("Persisted by the API")}</h3>{model.persisted.map(e=><article key={e.n} data-k="real"><strong>{copy(e.n)}</strong><span>{copy(e.f)}</span></article>)}</div>
@@ -197,7 +197,7 @@ return <div className="rh-page">
   <section className="rh-section rh-eng" aria-labelledby="rh-eng-title">
     <div className="shell">
       <p className="rh-index">{copy("08 · Engineering")}</p>
-      <h2 id="rh-eng-title">{copy("Prototype engineering, stated plainly.")}</h2>
+      <h2 id="rh-eng-title">{copy("How the prototype works.")}</h2>
       <div className="rh-arch" role="img" aria-label={copy("Architecture: three role views in a React single-page app talk to an Express API over a dev proxy; the API stores four collections as JSON files; the app also reads static fixture files and keeps role sessions and choices in browser storage.")}>
         <div className="rh-arch-col"><span className="rh-arch-h">{copy("Browser · React 18 SPA")}</span><div>{copy("Patient views")}</div><div>{copy("Therapist views")}</div><div>{copy("Admin views")}</div><div className="rh-arch-soft">{copy("sessionStorage role · localStorage choices")}</div></div>
         <div className="rh-arch-arrows" aria-hidden="true"><span>{copy("/api")}</span><span>{copy("/data/*.json")}</span></div>
@@ -216,7 +216,7 @@ return <div className="rh-page">
   <section className="rh-section rh-path" aria-labelledby="rh-path-title">
     <div className="shell">
       <p className="rh-index">{copy("09 · From experience to prototype")}</p>
-      <h2 id="rh-path-title">{copy("Observe, model, design, build, propose.")}</h2>
+      <h2 id="rh-path-title">{copy("From observation to prototype.")}</h2>
       <ol className="rh-path-steps">
         <li><span>{copy("Experienced")}</span><p>{copy("Daily participation in a rehabilitation program; conversations with other patients, therapists and staff; watching the routines.")}</p></li>
         <li><span>{copy("Observed")}</span><p>{copy("Paper plans, short-notice changes, orientation problems, clothing uncertainty, no weekly overview; high coordination load for staff.")}</p></li>
@@ -230,7 +230,7 @@ return <div className="rh-page">
 
   <section className="rh-section rh-next" aria-labelledby="rh-next-title">
     <div className="shell rh-two rh-two-wide">
-      <div><p className="rh-index">{copy("10 · What happened next")}</p><h2 id="rh-next-title">{copy("A concept on the table, not a system in a clinic.")}</h2><p className="rh-lede">{copy("The concept was proposed to rehabilitation organizations. It did not move into production deployment, and the prototype was never used in clinical operation.")}</p><p>{copy("That is the normal shape of healthcare digitalization. Building the software is one part. Adoption also needs institutional capacity, a funding and procurement route, integration with existing clinic systems, regulatory and security review, organizational change and alignment with clinical stakeholders. None of those are solved by a prototype, however complete it looks.")}</p></div>
+      <div><p className="rh-index">{copy("10 · What happened next")}</p><h2 id="rh-next-title">{copy("Prototype status and next steps.")}</h2><p className="rh-lede">{copy("The concept was proposed to rehabilitation organizations. It did not move into production deployment, and the prototype was never used in clinical operation.")}</p><p>{copy("That is the normal shape of healthcare digitalization. Building the software is one part. Adoption also needs institutional capacity, a funding and procurement route, integration with existing clinic systems, regulatory and security review, organizational change and alignment with clinical stakeholders. None of those are solved by a prototype, however complete it looks.")}</p></div>
       <div><p className="rh-index">{copy("11 · What I learned")}</p><ul className="rh-lessons">{lessons.map(l=><li key={l.t}><strong>{copy(l.t)}</strong><span>{copy(l.d)}</span></li>)}</ul></div>
     </div>
   </section>
@@ -244,5 +244,5 @@ return <div className="rh-page">
     </div>
   </section>
 
-  <section className="rh-close"><div className="shell"><p className="rh-index">{copy("Next")}</p><h2>{copy("Three projects, one practice.")}</h2><div className="actions"><Link className="button primary rh-button" href="/projects/skatalyst-ai">{copy("SKatalyst AI →")}</Link><Link className="button rh-button-ghost" href="/projects/the-magical-book">{copy("The Magical Book →")}</Link></div></div></section>
+  <section className="rh-close"><div className="shell"><p className="rh-index">{copy("Next")}</p><h2>{copy("More projects.")}</h2><div className="actions"><Link className="button primary rh-button" href="/projects/skatalyst-ai">{copy("SKatalyst AI →")}</Link><Link className="button rh-button-ghost" href="/projects/the-magical-book">{copy("The Magical Book →")}</Link></div></div></section>
 </div>}

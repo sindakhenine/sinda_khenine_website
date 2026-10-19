@@ -9,7 +9,7 @@ export function canonicalUrl(path = "/") {
 
 type PageDetails = {title: string; description: string; image?: string};
 
-export function createPageMetadata(path: string, {title, description, image = "/assets/sinda_picture-960.jpg"}: PageDetails, locale = "en"): Metadata {
+export function createPageMetadata(path: string, {title, description, image = "/assets/about/sinda-portrait-personal.jpg"}: PageDetails, locale = "en"): Metadata {
   const t = getCopy(locale);
   title = t(title); description = t(description);
   const url = canonicalUrl(localizedPath(path, locale));

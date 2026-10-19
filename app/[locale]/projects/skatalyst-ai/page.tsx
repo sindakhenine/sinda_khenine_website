@@ -93,7 +93,7 @@ return <div className="sk-page">
   <section className="sk-section sk-problem" aria-labelledby="sk-problem-title">
     <div className="shell">
       <p className="sk-index">{copy("01 · The problem")}</p>
-      <h2 id="sk-problem-title">{copy("The problem isn’t missing data.")}<br/><span>{copy("It’s missing context.")}</span></h2>
+      <h2 id="sk-problem-title">{copy("Why I started SKatalyst AI.")}<br/><span>{copy("It’s missing context.")}</span></h2>
       <div className="sk-two-col">
         <div>
           <p className="sk-lede">{copy("Most organizations already hold the information they need. It just exists as separate files and rows, spread across drives, mailboxes, databases and tools that were never designed to explain each other.")}</p>
@@ -113,7 +113,7 @@ return <div className="sk-page">
     <div className="shell">
       <p className="sk-index">{copy("02 · The idea")}</p>
       <h2 id="sk-idea-title" className="sk-formula"><span>{copy("Data")}</span><i>→</i><span>{copy("Context")}</span><i>→</i><span>{copy("Structure")}</span><i>→</i><span>{copy("Application")}</span></h2>
-      <p className="sk-lede sk-center">{copy("The whole company in one line: the value is not the model. It is the persistent, validated understanding that sits between an organization’s data and the software built on it.")}</p>
+      <p className="sk-lede sk-center">{copy("SKatalyst AI stores what it learns about an organization’s data, validates it and uses that context to generate software.")}</p>
       <div className="sk-signature" role="img" aria-label={copy("Diagram: many disconnected organizational objects on the left flow into SKatalyst AI, which understands, structures, connects and validates them, and out on the right come working software: dashboard, CRUD, RAG, report, prediction and custom applications.")}>
         <div className="sk-sig-left"><p className="sk-sig-label">{copy("Thousands of disconnected objects")}</p><div className="sk-sig-cloud">{["Files","Tables","PDFs","Images","Databases","Cloud storage","Reports","Spreadsheets","Notes","Tickets","Exports","Screenshots","Contracts","Test logs"].map((x,i)=><span key={x} style={{"--i":i} as React.CSSProperties}>{copy(x)}</span>)}</div></div>
         <div className="sk-sig-center"><p className="sk-sig-brand">{copy("SKatalyst AI")}</p><ol><li>{copy("Understand")}</li><li>{copy("Structure")}</li><li>{copy("Connect")}</li><li>{copy("Validate")}</li></ol><p className="sk-sig-sub">{copy("persistent context · human approval · evidence")}</p></div>
@@ -129,7 +129,7 @@ return <div className="sk-page">
       <div className="sk-two-col sk-two-col-wide">
         <div>
           <h2 id="sk-context-title">{copy("From files to organizational context")}</h2>
-          <p className="sk-lede">{copy("SKatalyst is not built to upload files to a language model and ask questions. Each run turns input data, progressively and inspectably, into persistent structured context.")}</p>
+          <p className="sk-lede">{copy("Each run reads the source data and builds structured context that can be inspected and reused.")}</p>
           <p>{copy("A read-only scan produces an inventory the user approves. A structuring plan proposes entities, a schema and a folder taxonomy. An architecture recommendation explains its confidence and what was excluded from the estimate. KPI discovery only offers metrics the data can compute. Every step is stored in PostgreSQL with lineage back to the source files, and the context a run used is frozen and hashed at start so it can be reconstructed later.")}</p>
           <blockquote className="sk-pull"><p>{copy("The LLM should not be the database.")}</p><footer>{copy("The model interprets. The resulting understanding lives in structured, persistent tables, so organizational knowledge is not rebuilt from scratch on every prompt.")}</footer></blockquote>
         </div>
@@ -145,7 +145,7 @@ return <div className="sk-page">
   <section className="sk-section sk-intel" aria-labelledby="sk-intel-title">
     <div className="shell">
       <p className="sk-index">{copy("04 · The intelligence layer")}</p>
-      <h2 id="sk-intel-title">{copy("AI is part of the pipeline, not the whole pipeline.")}</h2>
+      <h2 id="sk-intel-title">{copy("Where I use AI in the pipeline.")}</h2>
       <p className="sk-lede">{copy("SKatalyst combines deterministic software with AI reasoning, and keeps the boundary visible. The default platform provider is a deterministic heuristic; a model is added when a key is configured, and features that need one degrade to a non-AI path instead of failing.")}</p>
       <div className="sk-split">
         <article><h3>{copy("Deterministic layer")}</h3><p>{copy("Guaranteed by code, tests and the database.")}</p><ul>{deterministic.map(x=><li key={x}>{copy(x)}</li>)}</ul></article>
@@ -158,7 +158,7 @@ return <div className="sk-page">
   <section className="sk-section sk-arch" id="architecture" aria-labelledby="sk-arch-title">
     <div className="shell">
       <p className="sk-index">{copy("05 · System architecture")}</p>
-      <h2 id="sk-arch-title">{copy("Seven layers, one direction of travel.")}</h2>
+      <h2 id="sk-arch-title">{copy("The seven layers of the system.")}</h2>
       <p className="sk-lede">{copy("Verified against the platform’s source. Each layer only depends on the ones above it; validation sits between generation and delivery on purpose.")}</p>
       <ol className="sk-layers">{layers.map((l,i)=><li key={l.name}><div className="sk-layer-head"><span>{copy(String(i+1).padStart(2,"0"))}</span><h3>{copy(l.name)}</h3></div><ul>{l.items.map(x=><li key={x}>{copy(x)}</li>)}</ul><p>{copy(l.note)}</p></li>)}</ol>
       <div className="sk-agent-note"><strong>{copy("Alongside the platform:")}</strong> {copy(" a read-only local server agent written in Go (about 1,600 lines) for on-premise folders, with path allowlisting, pattern exclusions, a kill switch and a heartbeat. No writes, no telemetry.")}</div>
@@ -169,7 +169,7 @@ return <div className="sk-page">
     <div className="shell sk-two-col sk-two-col-wide">
       <div>
         <p className="sk-index">{copy("Connectors")}</p>
-        <h2 id="sk-conn-title">{copy("Meet the organization where its data already lives.")}</h2>
+        <h2 id="sk-conn-title">{copy("Connecting existing data sources.")}</h2>
         <p className="sk-lede">{copy("SKatalyst doesn’t require the organization to move everything into a new ecosystem before it can begin understanding the data.")}</p>
         <p>{copy("Twelve source types are implemented, from local upload to Databricks. The labels below are the product’s own: a connector may not leave Preview until a real byte-read against a real external account has been proven and recorded. Connecting and browsing already work; local upload runs the full pipeline today.")}</p>
         <ul className="sk-conn-grid">{connectors.map(c=><li key={c.name} data-m={c.m}><span>{copy(c.name)}</span><small>{copy(c.m)}</small></li>)}</ul>
@@ -181,7 +181,7 @@ return <div className="sk-page">
   <section className="sk-section sk-outputs" aria-labelledby="sk-out-title">
     <div className="shell">
       <p className="sk-index">{copy("06 · What it can build")}</p>
-      <h2 id="sk-out-title">{copy("Context becomes something people can use.")}</h2>
+      <h2 id="sk-out-title">{copy("What the platform can generate.")}</h2>
       <div className="sk-catalog">{outputs.map(o=><article key={o.t} data-s={o.s}><h3>{copy(o.t)}</h3><p>{copy(o.d)}</p><span>{copy(o.s)}</span></article>)}</div>
       <div className="sk-shots-2">
         <ProductFrame src={`${M}/design-modules.jpg`} alt={copy("Suggested modules in the design step: Dashboard and CRUD App recommended with the evidence behind each recommendation, confidence, business value and detected KPIs or entities.")} width={1980} height={1500} label={copy("Design · suggested modules with evidence")}/>
@@ -193,7 +193,7 @@ return <div className="sk-page">
   <section className="sk-section sk-trust" aria-labelledby="sk-trust-title">
     <div className="shell">
       <p className="sk-index">{copy("07 · Trust and validation")}</p>
-      <h2 id="sk-trust-title">{copy("Generated isn’t the same as correct.")}</h2>
+      <h2 id="sk-trust-title">{copy("Checking the generated results.")}</h2>
       <p className="sk-lede">{copy("If AI is going to generate software from organizational data, generation cannot be the final step. SKatalyst treats validation as part of the architecture: expectations are compiled from the data understanding, never from the generated code, so a generator’s mistake cannot vouch for itself.")}</p>
       <ol className="sk-loop" aria-label={copy("Validation loop")}><li>{copy("Build")}</li><li>{copy("Test")}</li><li>{copy("Compare")}</li><li>{copy("Explain")}</li><li>{copy("Repair / Review")}</li></ol>
       <div className="sk-val-grid">{validationParts.map(v=><article key={v.i}><h3>{copy(v.u)}</h3><code>{v.i}</code><p>{copy(v.d)}</p></article>)}</div>
@@ -208,7 +208,7 @@ return <div className="sk-page">
   <section className="sk-section sk-approval" aria-labelledby="sk-appr-title">
     <div className="shell">
       <p className="sk-index">{copy("Human approval")}</p>
-      <h2 id="sk-appr-title">{copy("Agentic doesn’t mean uncontrolled.")}</h2>
+      <h2 id="sk-appr-title">{copy("Where people review and approve.")}</h2>
       <div className="sk-two-col sk-two-col-wide">
         <div>
           <p className="sk-lede">{copy("The system proposes; a person decides at the moments that matter. Two gates are distinct by design: approving a specification before anything is built, and accepting a preview after it is built.")}</p>
@@ -227,7 +227,7 @@ return <div className="sk-page">
   <section className="sk-section sk-journey" aria-labelledby="sk-journey-title">
     <div className="shell">
       <p className="sk-index">{copy("08 · Product experience")}</p>
-      <h2 id="sk-journey-title">{copy("One guided journey per run.")}</h2>
+      <h2 id="sk-journey-title">{copy("The steps in a run.")}</h2>
       <p className="sk-lede">{copy("The in-app stepper tracks eight steps on every run page. Each step explains what the system knows, why it matters and the next best action, in the product’s own voice.")}</p>
       <ol className="sk-steps">{journey.map((j,i)=><li key={j}><span>{copy(String(i+1).padStart(2,"0"))}</span>{copy(j)}</li>)}</ol>
       <div className="sk-journey-grid">
@@ -259,7 +259,7 @@ return <div className="sk-page">
           </ul>
         </div>
         <div>
-          <h3>{copy("The model is a component, not the product.")}</h3>
+          <h3>{copy("Choosing and connecting models.")}</h3>
           <p>{copy("SKatalyst is not tied to one model provider. Tenants bring their own keys for Claude, OpenAI or Gemini; keys are encrypted at rest, decrypted only at execution, and one active key per provider is enforced. Generated chat applications use the customer’s own runtime provider, chosen at deploy time, never requested during design.")}</p>
           <p>{copy("The value sits around the models: the context, the workflows, the structured data, the application architecture and the validation system.")}</p>
           <ProductFrame src={`${M}/byok.jpg`} alt={copy("Settings, LLM API keys: bring your own key for Anthropic Claude, OpenAI GPT and Google Gemini.")} width={1950} height={640} label={copy("Settings · bring your own key")} sizes="(max-width: 1000px) 100vw, 50vw"/>
@@ -287,5 +287,5 @@ return <div className="sk-page">
     </div>
   </section>
 
-  <section className="sk-close"><div className="shell"><p className="sk-index">{copy("Next")}</p><h2>{copy("Two projects, one practice.")}</h2><div className="actions"><TrackedLink className="button primary sk-button" href="https://skatalystai.com" eventName="skatalyst_link_clicked" target="_blank" rel="noreferrer">{copy("Visit SKatalyst AI")}</TrackedLink><Link className="button sk-button-ghost" href="/projects/the-magical-book">{copy("Next: The Magical Book →")}</Link></div></div></section>
+  <section className="sk-close"><div className="shell"><p className="sk-index">{copy("Next")}</p><h2>{copy("More projects.")}</h2><div className="actions"><TrackedLink className="button primary sk-button" href="https://skatalystai.com" eventName="skatalyst_link_clicked" target="_blank" rel="noreferrer">{copy("Visit SKatalyst AI")}</TrackedLink><Link className="button sk-button-ghost" href="/projects/the-magical-book">{copy("Next: The Magical Book →")}</Link></div></div></section>
 </div>}

@@ -91,14 +91,14 @@ return <div className="ga-page">
         <div className="ga-chain-col"><h3>{copy("Chat AI")}</h3><ol><li>{copy("User asks")}</li><li>{copy("Model responds")}</li><li>{copy("Conversation continues")}</li></ol></div>
         <div className="ga-chain-col ga-chain-arena"><h3>{copy("Agent arena")}</h3><ol><li>{copy("World state")}</li><li>{copy("Agent perceives")}</li><li>{copy("Agent chooses an action")}</li><li>{copy("Tool executes")}</li><li>{copy("World changes")}</li><li>{copy("Other agents react")}</li></ol></div>
       </div>
-      <p className="ga-pull">{copy("The interface isn’t the product of the agent’s reasoning. The changed world is.")}</p>
+      <p className="ga-pull">{copy("The interface shows how each agent’s decisions change the world.")}</p>
     </div>
   </section>
 
   <section className="ga-section ga-cast" aria-labelledby="ga-cast-title">
     <div className="shell">
       <p className="ga-index">{copy("02 · The cast")}</p>
-      <h2 id="ga-cast-title">{copy("Four want to win. Six make sure the world pushes back.")}</h2>
+      <h2 id="ga-cast-title">{copy("The ten agent roles.")}</h2>
       <div className="ga-cast-grid">
         <div><p className="ga-mini">{copy("Player agents")}</p><div className="ga-players">{players.map(p=><article key={p.id} data-id={p.id.toLowerCase()}><h3>{copy(p.id)}</h3><p className="ga-bias">{copy(p.bias)}</p><p>{copy(p.note)}</p></article>)}</div><p className="ga-caption">{copy("Starting biases from each agent’s charter, served to the bot on connect. They are biases, not scripts: the charter tells every player the bias is a starting point and the world may change.")}</p></div>
         <figure className="ga-frame ga-roster"><div className="ga-frame-bar"><span>{copy("AI AGENTS · roster")}</span></div><Image src={`${M}/roster.jpg`} alt={copy("The arena roster: Atlas as director, Alpha, Beta, Gamma and Delta as players, and Observer, Difficulty, Provocateur, Judge and Evolution as system agents.")} width={400} height={960} sizes="(max-width: 900px) 60vw, 300px" loading="lazy"/></figure>
@@ -111,7 +111,7 @@ return <div className="ga-page">
   <section className="ga-section ga-topology" aria-labelledby="ga-topo-title">
     <div className="shell">
       <p className="ga-index">{copy("03 · Topology")}</p>
-      <h2 id="ga-topo-title">{copy("Every agent reaches the world through a narrow door.")}</h2>
+      <h2 id="ga-topo-title">{copy("How agents access the arena.")}</h2>
       <div className="ga-topo" role="img" aria-label={copy("Diagram: the arena world at the centre; the four player agents around it, each connected through role-scoped tools; an outer control layer of Observer, Difficulty, Provocateur, Judge, Evolution and Atlas that receives events and telemetry and returns rules, interventions and evaluations.")}>
         <div className="ga-topo-outer">{["Observer","Difficulty","Provocateur","Judge","Evolution","Atlas"].map(n=><span key={n} className="ga-topo-sys">{copy(n)}</span>)}</div>
         <div className="ga-topo-inner">{["Alpha","Beta","Gamma","Delta"].map(n=><span key={n} className="ga-topo-player" data-id={n.toLowerCase()}>{copy(n)}</span>)}<div className="ga-topo-core"><strong>{copy("Arena world")}</strong><small>{copy("state · rules · events")}</small></div></div>
@@ -185,7 +185,7 @@ return <div className="ga-page">
   <section className="ga-section ga-mcp" aria-labelledby="ga-mcp-title">
     <div className="shell">
       <p className="ga-index">{copy("08 · Model Context Protocol")}</p>
-      <h2 id="ga-mcp-title">{copy("Agents don’t get the whole system.")}<br/><span>{copy("They get tools.")}</span></h2>
+      <h2 id="ga-mcp-title">{copy("Permissions for each role.")}<br/><span>{copy("They get tools.")}</span></h2>
       <p className="ga-lede">{copy("The arena exposes a hand-written MCP server: JSON-RPC over streamable HTTP, three protocol versions, no SDK. Thirty tools exist; a bot sees only the ones its role allows.")}</p>
       <div className="ga-tools">{Object.entries(tools).map(([g,list])=><div key={g}><h3>{copy(g)}</h3><ul>{list.map(t=><li key={t}><code>{t}</code></li>)}</ul></div>)}</div>
       <div className="ga-toolcounts">{[["Atlas",14],["Alpha",13],["Beta",13],["Gamma",13],["Delta",13],["Judge",11],["Provocateur",8],["Difficulty",7],["Observer",6],["Evolution",5]].map(([n,c])=><div key={String(n)}><strong>{copy(c)}</strong><span>{copy(n)}</span></div>)}</div>
@@ -196,14 +196,14 @@ return <div className="ga-page">
   <section className="ga-section ga-bounds" aria-labelledby="ga-b-title">
     <div className="shell">
       <p className="ga-index">{copy("09 · Boundaries")}</p>
-      <h2 id="ga-b-title">{copy("Autonomy needs boundaries.")}</h2>
+      <h2 id="ga-b-title">{copy("Limits on agent actions.")}</h2>
       <div className="ga-bgrid">{boundaries.map(b=><article key={b.t}><h3>{copy(b.t)}</h3><p>{copy(b.d)}</p></article>)}</div>
     </div>
   </section>
 
   <section className="ga-section ga-engine" id="engine" aria-labelledby="ga-e-title">
     <div className="shell ga-two ga-two-wide">
-      <div><p className="ga-index">{copy("10 · Game engine")}</p><h2 id="ga-e-title">{copy("AI decides. The engine decides what actually happens.")}</h2><p className="ga-lede">{copy("Model output never mutates the world. It becomes a structured decision that passes schema validation, rule validation and a final sanitisation before a deterministic engine resolves it and emits events.")}</p><ol className="ga-flow ga-flow-vertical"><li>{copy("AI decision")}</li><li>{copy("Schema validation")}</li><li>{copy("Rule validation")}</li><li>{copy("Arena engine")}</li><li>{copy("State mutation")}</li><li>{copy("Telemetry")}</li></ol></div>
+      <div><p className="ga-index">{copy("10 · Game engine")}</p><h2 id="ga-e-title">{copy("How the engine resolves decisions.")}</h2><p className="ga-lede">{copy("Model output never mutates the world. It becomes a structured decision that passes schema validation, rule validation and a final sanitisation before a deterministic engine resolves it and emits events.")}</p><ol className="ga-flow ga-flow-vertical"><li>{copy("AI decision")}</li><li>{copy("Schema validation")}</li><li>{copy("Rule validation")}</li><li>{copy("Arena engine")}</li><li>{copy("State mutation")}</li><li>{copy("Telemetry")}</li></ol></div>
       <div><p className="ga-mini">{copy("What the engine owns")}</p><ul className="ga-facts"><li><strong>{copy("World.")}</strong> {copy(" Continuous 2D positions, four home slots, resource nodes (cube, crystal) that respawn.")}</li><li><strong>{copy("Players.")}</strong> {copy(" Generic attributes: energy (max 100), resources, score, plus anything a rule adds. Defence is a timed state.")}</li><li><strong>{copy("Rules.")}</strong> {copy(" Five core rules; evolved rules stack on top as bounded modifiers.")}</li><li><strong>{copy("Turns.")}</strong> {copy(" Turn state, deadlines, early resolution, seeded order, timeouts.")}</li><li><strong>{copy("Outcomes.")}</strong> {copy(" Highest score wins; VICTORY and DEFEAT states; a match summary records rules, turns and windows.")}</li><li><strong>{copy("Generations.")}</strong> {copy(" Match end opens the evolution phase; approved permanent mechanics carry into the next generation.")}</li><li><strong>{copy("Events.")}</strong> {copy(" 33 typed events drive the renderer; stats change only when the animation resolves.")}</li></ul></div>
     </div>
   </section>
@@ -225,13 +225,13 @@ return <div className="ga-page">
   <section className="ga-section ga-obs" aria-labelledby="ga-o-title">
     <div className="shell">
       <p className="ga-index">{copy("12 · Observability")}</p>
-      <h2 id="ga-o-title">{copy("If agents act, you need to see why the system changed.")}</h2>
+      <h2 id="ga-o-title">{copy("Tracing changes back to agent actions.")}</h2>
       <p className="ga-lede">{copy("Nothing on this page shows a model’s hidden reasoning. What the arena records is what an observer can legitimately see: chosen actions with a public reason, turn events, state transitions, tool calls, validation outcomes, interventions, scores and timeouts.")}</p>
       <div className="ga-obs-grid">
         <figure className="ga-frame"><div className="ga-frame-bar"><span>{copy("Live event stream · player stats · difficulty analysis")}</span></div><Image src={`${M}/bottom-row.jpg`} alt={copy("Bottom row of the control room: live event stream with actions such as Beta collect and Alpha attack Gamma, player stats with score, energy and resources per robot, and the difficulty analysis chart.")} width={2112} height={340} sizes="100vw" loading="lazy"/></figure>
         <ul className="ga-facts"><li><strong>{copy("Event log.")}</strong> {copy(" 33 typed events on a pub/sub bus; the feed keeps the last 60.")}</li><li><strong>{copy("Telemetry.")}</strong> {copy(" Twelve computed fields: action distribution, attack usage, predictability, action diversity, score spread, leader advantage, resource distribution, difficulty history, repetition, resource and alliance concentration, adaptation rate. Served to Difficulty and Judge.")}</li><li><strong>{copy("Audit trail.")}</strong> {copy(" Every MCP call with agent, tool, turn, accepted flag and latency (500 in memory, 200 persisted), surfaced in the LAB.")}</li><li><strong>{copy("Replay recorder.")}</strong> {copy(" Captures validated engine events (cap 5,000) and can re-emit them at any speed without touching the engine or any provider. The viewer is not shipped.")}</li><li><strong>{copy("Honest gap.")}</strong> {copy(" Logs go to stdout and no run log from the live experiments was preserved.")}</li></ul>
       </div>
-      <p className="ga-pull">{copy("The arena isn’t only an execution environment. It is also an observation environment.")}</p>
+      <p className="ga-pull">{copy("The arena records agent actions so I can study what happened.")}</p>
     </div>
   </section>
 
@@ -267,7 +267,7 @@ return <div className="ga-page">
 
   <section className="ga-section ga-dev" aria-labelledby="ga-d-title">
     <div className="shell ga-two ga-two-wide">
-      <div><p className="ga-index">{copy("17 · Development")}</p><h2 id="ga-d-title">{copy("Building the arena meant building the boundaries first.")}</h2><ol className="ga-timeline">{timeline.map(t=><li key={t.t}><time>{copy(t.t)}</time><p>{copy(t.d)}</p></li>)}</ol><p className="ga-caption">{copy("Reconstructed from file history: the repository holds one scaffold commit and everything else uncommitted, so the order comes from timestamps, session markers and documents, not from git.")}</p></div>
+      <div><p className="ga-index">{copy("17 · Development")}</p><h2 id="ga-d-title">{copy("What I learned while building the arena.")}</h2><ol className="ga-timeline">{timeline.map(t=><li key={t.t}><time>{copy(t.t)}</time><p>{copy(t.d)}</p></li>)}</ol><p className="ga-caption">{copy("Reconstructed from file history: the repository holds one scaffold commit and everything else uncommitted, so the order comes from timestamps, session markers and documents, not from git.")}</p></div>
       <div><p className="ga-index">{copy("18 · Engineering")}</p><dl className="ga-numbers">{numbers.map(n=><div key={n.l}><dt>{copy(n.n)}</dt><dd>{copy(n.l)}</dd></div>)}</dl><dl className="ga-stack">{stack.map(s=><div key={s.k}><dt>{copy(s.k)}</dt><dd>{copy(s.v)}</dd></div>)}</dl></div>
     </div>
   </section>
@@ -275,7 +275,7 @@ return <div className="ga-page">
   <section className="ga-section ga-role" aria-labelledby="ga-r-title">
     <div className="shell ga-two ga-two-wide">
       <aside><p className="ga-index">{copy("My role")}</p><h2 id="ga-r-title" className="ga-role-title">{copy("Concept · Multi-Agent Architecture · AI Engineering · Product · Interaction Design")}</h2><ul className="ga-facts"><li>{copy("Arena concept and the four-plus-six role design")}</li><li>{copy("Action architecture: structured decisions, validation layers, honest timeouts")}</li><li>{copy("System-agent design: observe, measure, provoke, judge, evolve, direct")}</li><li>{copy("MCP and tool architecture with role scoping, audit and constitution")}</li><li>{copy("Grok Bot integration: per-bot credentials, OAuth, connector plugins, CLI orchestrator")}</li><li>{copy("Game rules, engine and 3D control room")}</li><li>{copy("Iterative testing of the honesty invariants")}</li></ul></aside>
-      <div className="ga-bigidea"><p className="ga-index">{copy("The big idea")}</p><h2>{copy("The arena is just the visible part.")}</h2><p>{copy("Underneath it is the harder question: how do you give autonomous agents enough capability to act, while keeping their identity, permissions, decisions and consequences observable and bounded?")}</p></div>
+      <div className="ga-bigidea"><p className="ga-index">{copy("The big idea")}</p><h2>{copy("What I want to test next.")}</h2><p>{copy("I wanted to see which tools agents actually used, whether they respected permissions and how their decisions affected one another.")}</p></div>
     </div>
   </section>
 
@@ -288,5 +288,5 @@ return <div className="ga-page">
     </div>
   </section>
 
-  <section className="ga-close"><div className="shell"><p className="ga-index">{copy("Next")}</p><h2>{copy("Four projects, one practice.")}</h2><div className="actions"><WatchDemoButton className="button primary ga-button">{copy("Watch the arena again")}</WatchDemoButton><Link className="button ga-button-ghost" href="/projects">{copy("All projects →")}</Link></div></div></section>
+  <section className="ga-close"><div className="shell"><p className="ga-index">{copy("Next")}</p><h2>{copy("More projects.")}</h2><div className="actions"><WatchDemoButton className="button primary ga-button">{copy("Watch the arena again")}</WatchDemoButton><Link className="button ga-button-ghost" href="/projects">{copy("All projects →")}</Link></div></div></section>
 </div>}

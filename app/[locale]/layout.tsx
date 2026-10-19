@@ -10,6 +10,7 @@ import {themeScript} from "@/lib/theme";
 import {Analytics} from "@vercel/analytics/next";
 import {Header} from "@/components/Header";
 import {Footer} from "@/components/Footer";
+import {PageMotion} from "@/components/PageMotion";
 import {siteConfig} from "@/content/site/config";
 import {createPageMetadata, identityGraph, serializeJsonLd} from "@/lib/seo";
 
@@ -30,6 +31,7 @@ export default async function RootLayout({children, params}: {children: React.Re
     <a className="skip-link" href="#main">{t("Skip to content")}</a>
     <Header/>
     <main id="main">{children}</main>
+    <PageMotion/>
     <Footer/>
     <Analytics/>
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html: serializeJsonLd({...identityGraph, "@graph": identityGraph["@graph"].map(entity => entity["@type"] === "WebSite" ? {...entity, inLanguage: ["en", "de", "fr"]} : entity)})}}/>

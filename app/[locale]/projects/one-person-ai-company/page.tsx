@@ -45,7 +45,7 @@ const day=[
   {t:"16:30",k:"auto",h:"Final synthesis",d:"70 seconds after the planned end, the guaranteed final report (9,556 characters) is generated. Task creation and claims are refused after the deadline. The run record itself was never finalised and is still marked ACTIVE."}
 ];
 const failures=[
-  {t:"The environment, not the model",d:"Minutes after launch, the orchestrator was down because macOS refused a shell sourcing .env under launchd. The intelligence was fine; the plumbing was not."},
+  {t:"A startup failure",d:"Minutes after launch, the orchestrator stopped because macOS refused a shell sourcing .env under launchd. I had to fix the startup configuration."},
   {t:"Synthetic data in a real run",d:"Development seed data leaked into two read tools. OpenClaw did the rational thing with what it saw and opened a task about a company that does not exist. A human audit caught it; the cancellation is in the log."},
   {t:"Autonomy stalled",d:"Once research was declared sufficient, the design silently turned the remaining 23 hours into idle time. The fix had to be written during the run."},
   {t:"Reports that got shorter",d:"Each heartbeat consultation rewrote the report with no new evidence: 9,491 to 7,338 to 6,714 characters. The system was productive-looking and useless, at a cost."},
@@ -109,7 +109,7 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   <section className="op-section" id="experiment"><div className="shell">
     <p className="op-index">{copy("01 · The experiment")}</p>
-    <h2>{copy("Delegating objectives, not tasks.")}</h2>
+    <h2>{copy("The question I wanted to test.")}</h2>
     <div className="op-two"><div>
       <p className="op-lede">{copy("Chat AI is good at tasks: answer this, rewrite that. An organization works differently. You hand someone an outcome and they decide what to research, what to do next, when to ask for help and when the work is done. The experiment tested whether that shape could be built from agents, with one human at the top.")}</p>
       <p>{copy("The objective was deliberately real and measurable: a public pay-to-rank marketplace where companies bid for attention. The mission text stored in the run record asks the company to measure what every participant received relative to what they paid, identify who benefited most and least, explain why, and estimate the value captured by the platform itself.")}</p>
@@ -141,7 +141,7 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   <section className="op-section"><div className="shell">
     <p className="op-index">{copy("03 · The orchestrator")}</p>
-    <h2>{copy("A loop that lets the model decide and never lets it execute.")}</h2>
+    <h2>{copy("How decisions reach the backend.")}</h2>
     <p className="op-lede">{copy("The orchestrator is a plain TypeScript worker, no agent framework and no queue. It polls PostgreSQL, works out whether a decision point has arrived, and only then spends tokens. The model sees the dataset through read-only tools and can change the world through exactly one function.")}</p>
     <ol className="op-loop">{loop.map(([k,v])=><li key={k}><span>{copy(k)}</span>{copy(v)}</li>)}</ol>
     <div className="op-two op-two-wide" style={{marginTop:32}}>
@@ -161,13 +161,13 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   <section className="op-section"><div className="shell">
     <p className="op-index">{copy("04 · Agent ownership")}</p>
-    <h2>{copy("Each role owns a mission, a tool set, a routine, an output and a checkpoint.")}</h2>
+    <h2>{copy("What each agent is responsible for.")}</h2>
     <div className="op-cards op-cards-2">{roles.map(r=><article key={r.name}><header><h3>{copy(r.name)}</h3><small>{copy(r.title)}</small></header><dl><dt>{copy("Mission")}</dt><dd>{copy(r.mission)}</dd><dt>{copy("Tools")}</dt><dd>{copy(r.tools)}</dd><dt>{copy("Routine")}</dt><dd>{copy(r.routine)}</dd><dt>{copy("Output")}</dt><dd>{copy(r.output)}</dd><dt>{copy("Checkpoint")}</dt><dd>{copy(r.checkpoint)}</dd></dl></article>)}</div>
   </div></section>
 
   <section className="op-section"><div className="shell">
     <p className="op-index">{copy("05 · Persistence")}</p>
-    <h2>{copy("The memory is a database, not a chat history.")}</h2>
+    <h2>{copy("What the system remembers.")}</h2>
     <div className="op-two"><div>
       <p className="op-lede">{copy("Every run has its own monotonic event sequence. Fifty event types cover the whole life of the company: run lifecycle, consultations and tool calls, decisions made, applied or refused, task transitions, research activity, claims, verifications, snapshots, anomalies, process restarts, skipped heartbeats, missed checkpoints, human interventions and generated reports.")}</p>
       <ul className="op-facts">
@@ -197,7 +197,7 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   <section className="op-section"><div className="shell">
     <p className="op-index">{copy("07 · Models")}</p>
-    <h2>{copy("Two models with different jobs. Only what was verified.")}</h2>
+    <h2>{copy("Models and their roles.")}</h2>
     <div className="op-cards">
       <article><header><h3>{copy("OpenClaw gateway")}</h3><small>{copy("manager")}</small></header><p>{copy("Provider string openclaw-gateway, model string openclaw. All 111 model calls in the official run went here. The gateway’s configured default, per the runbook, is Claude Sonnet 5.")}</p></article>
       <article><header><h3>{copy("Grok Bot")}</h3><small>{copy("researcher")}</small></header><p>{copy("Runs as an external worker with its own public web and public X search. This codebase contains no xAI key and no Grok model id; it exposes an inbox, and Grok calls in.")}</p></article>
@@ -208,7 +208,7 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   <section className="op-section"><div className="shell">
     <p className="op-index">{copy("08 · Tools")}</p>
-    <h2>{copy("Eleven ways to look. One way to act.")}</h2>
+    <h2>{copy("The manager’s tools.")}</h2>
     <div className="op-two"><div>
       <p className="op-mini">{copy("Read-only tools for the manager")}</p>
       <p style={{fontFamily:"var(--op-mono)",fontSize:".8rem",lineHeight:1.9}}>{copy(readTools.join(" · "))}</p>
@@ -293,7 +293,7 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
       <ul className="op-facts">
         <li>{copy("The business question: on a public pay-to-rank marketplace, is attention worth what companies pay for it? The measurable half (gross volume, distribution, cost per click) went to deterministic code. The unmeasurable half (what happened after the click) went to the researcher.")}</li>
         <li>{copy("Findings the company returned: about $182K in gross bids across 1,140 companies; the top 1 percent of spenders accounted for roughly 61 percent of spend; a 200x spread in cost per click across categories; visible audience mismatch; and commercial ROI marked UNKNOWN, because no company-credited outcome could be found publicly.")}</li>
-        <li>{copy("The honest line the article turns on: I automated the brain, but not the eyes. The company reasoned overnight without me; it never once looked at the market on its own.")}</li>
+        <li>{copy("The agents continued reasoning overnight, but every fresh market observation still required me.")}</li>
       </ul>
     </div><Shot src="grok-researcher-chat.jpg" w={1532} h={1560} path="Grok Bot · Outbid Researcher" alt={copy("Grok Bot conversation as the Outbid Researcher, reporting on public companies with no private data")} sizes="(max-width:900px) 100vw, 480px" cap={copy("The researcher at work in Grok Bot. Public companies only; nothing private in the frame.")}/></div>
     <div className="op-shots" style={{marginTop:28}}>
@@ -306,14 +306,14 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   <section className="op-section" id="happened"><div className="shell">
     <p className="op-index">{copy("15 · What actually happened")}</p>
-    <h2>{copy("It worked, it broke, and it kept the receipts.")}</h2>
+    <h2>{copy("What went wrong and what I changed.")}</h2>
     <div className="op-two"><div>
       <p className="op-lede">{copy("The company produced a usable interim report 33 minutes after launch and a final synthesis 70 seconds after the deadline. In between, it ran overnight without me. It also needed three emergency corrections, missed every observation checkpoint, spent tokens rewriting a report with no new evidence, and never had its run record formally closed.")}</p>
       <p className="op-mini">{copy("Failures, in order")}</p>
       <ul className="op-facts">{failures.map(f=><li key={f.t}><strong>{copy(f.t)}.</strong> {copy(f.d)}</li>)}</ul>
     </div><div>
       <p className="op-mini">{copy("The hard part")}</p>
-      <p>{copy("Building agents that act was the easy half. The hard part was building the thing that decides whether to believe them: a verifier that grades every claim, an event log that cannot be edited by hand, a UI that refuses to display anything it cannot trace, and a rule that UNKNOWN is a legitimate answer. Most of the mid-run fixes were about that layer, not about the model.")}</p>
+      <p>{copy("Most of my mid-run fixes concerned verification: checking claims, recording events and keeping unsupported conclusions out of the interface. The agents could continue working, but I still needed a reliable way to tell whether their work was correct.")}</p>
       <p className="op-mini">{copy("Agent contract")}</p>
       <div className="op-contract" style={{gridTemplateColumns:"1fr",marginTop:8}}>{contract.map(([k,v])=><article key={k}><h3>{copy(k)}</h3><p>{copy(v)}</p></article>)}</div>
     </div></div>
@@ -351,8 +351,8 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
 
   <section className="op-section"><div className="shell"><div className="op-bigidea">
     <p className="op-index">{copy("20 · The idea")}</p>
-    <h2>{copy("AI changes more when you redesign the work than when you improve the prompt.")}</h2>
-    <p>{copy("The model in this experiment was not special. What changed the outcome was the organization around it: roles with narrow tools, a single write path, a verifier that never takes an agent’s word, a database that remembers everything, and a human whose job was to set the objective and correct the system rather than to answer it questions. That is a design problem, and it is the part I want to keep working on.")}</p>
+    <h2>{copy("What I learned from the run.")}</h2>
+    <p>{copy("This experiment made me spend more time on tool permissions, verification and event records than on prompts. Those choices affected what I could trust in the final report. I want to keep testing that with longer runs and fewer interventions.")}</p>
   </div></div></section>
 
   <section className="op-section"><div className="shell">
@@ -366,6 +366,6 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
     </div></div>
   </div></section>
 
-  <section className="op-close"><div className="shell"><p className="op-index">{copy("Next")}</p><h2>{copy("Five projects, one practice.")}</h2><div className="actions"><WatchDemoButton className="button primary op-button">{copy("Watch the experiment again")}</WatchDemoButton><Link className="button op-button-ghost" href="/projects">{copy("All projects →")}</Link></div></div></section>
+  <section className="op-close"><div className="shell"><p className="op-index">{copy("Next")}</p><h2>{copy("More projects.")}</h2><div className="actions"><WatchDemoButton className="button primary op-button">{copy("Watch the experiment again")}</WatchDemoButton><Link className="button op-button-ghost" href="/projects">{copy("All projects →")}</Link></div></div></section>
   </div>;
 }

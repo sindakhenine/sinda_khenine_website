@@ -8,7 +8,7 @@ export default async function Projects({params}: {params: Promise<{locale: strin
 
   const magical=projects.find(p=>p.slug==="the-magical-book")!;const skatalyst=projects.find(p=>p.slug==="skatalyst-ai")!;const reha=projects.find(p=>p.slug==="reha")!;const grok=projects.find(p=>p.slug==="grok-arena")!;const opac=projects.find(p=>p.slug==="one-person-ai-company")!;
   return <div className="projects-page">
-    <header className="shell page-hero page-hero-editorial"><p className="eyebrow">{copy("Selected work ")}<span className="last-updated-inline">{copy("· Last updated ")}{copy(LAST_UPDATED)}</span></p><h1>{copy("Five systems, built end to end.")}</h1><p className="lede">{copy("A platform that turns fragmented business data into software customers own, a 24-hour experiment in delegating a real objective to an AI organization, a healthcare workflow prototype designed from a patient’s week outward, an arena where autonomous agents act inside bounded rules, and an experimental interface that turns generated history into a place you can enter.")}</p></header>
+    <header className="shell page-hero page-hero-editorial"><p className="eyebrow">{copy("Selected work ")}<span className="last-updated-inline">{copy("· Last updated ")}{copy(LAST_UPDATED)}</span></p><h1>{copy("Projects and experiments.")}</h1><p className="lede">{copy("Some of these projects are products. Others are experiments I built to answer a question. Here’s what works, what I learned and what still needs work.")}</p></header>
     <div className="shell project-index-list">
       <article className="project-product" id="skatalyst-ai">
         <div className="project-product-copy">
@@ -30,7 +30,7 @@ export default async function Projects({params}: {params: Promise<{locale: strin
             <p className="eyebrow">{copy("Autonomous Agents · Orchestration · AI Operations · OpenClaw")}</p>
             <h2>{copy(opac.title)}</h2>
             <p className="project-opac-statement">{copy("What if one person could delegate work to an entire AI organization?")}</p>
-            <p className="project-opac-summary">{copy("A 24-hour experiment: OpenClaw as manager, Grok Bot as researcher, deterministic code as accountant, PostgreSQL as the only truth and a live control room as the window. It produced a report, broke three times, and kept every receipt.")}</p>
+            <p className="project-opac-summary">{copy(opac.summary)}</p>
             <div className="project-opac-meta"><span>{copy("24 h official run")}</span><span>{copy("465 events")}</span><span>{copy("11 read tools · 1 write")}</span><span>{copy("Experiment · not deployed")}</span></div>
             <Link className="button primary" href={projectHref(opac)}>{copy("Enter the experiment →")}</Link>
           </div>
@@ -42,8 +42,8 @@ export default async function Projects({params}: {params: Promise<{locale: strin
           <p className="project-index-number" aria-hidden="true">03</p>
           <p className="eyebrow">{copy(reha.discipline)}</p>
           <h2>{copy(reha.title)}</h2>
-          <p className="project-reha-statement">{copy("Reimagining the rehabilitation journey from the patient outward.")}</p>
-          <p className="project-reha-summary">{copy("A three-role prototype (patient, therapist, administration) that turns a rehabilitation stay into one connected weekly plan: sessions with room, what to wear and what to bring, QR attendance, meals, free-time offers and orientation. Built from first-hand observation and proposed to rehabilitation organizations.")}</p>
+          <p className="project-reha-statement">{copy("A clearer weekly plan for a rehabilitation stay.")}</p>
+          <p className="project-reha-summary">{copy(reha.summary)}</p>
           <span className="project-reha-flag">{copy("Prototype · never deployed in clinical operation")}</span><br/>
           <Link className="button primary" href={projectHref(reha)}>{copy("Read the case study →")}</Link>
         </div>
