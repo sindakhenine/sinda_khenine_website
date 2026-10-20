@@ -2,7 +2,7 @@ import {setRequestLocale} from "next-intl/server";
 import {getCopy} from "@/i18n/server";
 import {createPageMetadata} from "@/lib/seo";
 import Image from "next/image";import {Link} from "@/i18n/navigation";import {MagicalBookDemo,WatchDemoButton} from "@/components/MagicalBookDemo";
-export async function generateMetadata({params}: {params: Promise<{locale: string}>}) { const {locale} = await params; return createPageMetadata("/projects/grok-arena", {title: "Grok Arena", description: "Grok Arena: an experimental arena for autonomous AI agents. Four players, six system agents, one shared world, role-scoped MCP tools, a deterministic engine and a 3D control room. Evidence-led case study."}, locale); }
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) { const {locale} = await params; return createPageMetadata("/projects/grok-arena", {title: "Grok Arena", description: "Grok Arena by Sinda Khenine: an experiment with autonomous AI agents, role-based MCP tools and a 3D control room. Explore the design and results."}, locale); }
 const M="/media/grok-arena";
 const players=[
   {id:"Alpha",bias:"Aggressive and opportunistic",note:"Pressure the leader, take the opening. A starting bias, not a script."},

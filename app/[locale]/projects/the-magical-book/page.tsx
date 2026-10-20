@@ -2,7 +2,7 @@ import {setRequestLocale} from "next-intl/server";
 import {getCopy} from "@/i18n/server";
 import {createPageMetadata} from "@/lib/seo";
 import Image from "next/image";import {Link} from "@/i18n/navigation";import {MagicalBookDemo,WatchDemoButton} from "@/components/MagicalBookDemo";import {magicalBookHeroBlur} from "@/content/projects/magicalBookBlur";
-export async function generateMetadata({params}: {params: Promise<{locale: string}>}) { const {locale} = await params; return createPageMetadata("/projects/the-magical-book", {title: "The Magical Book", description: "ChronoAtlas: an interactive magical book that turns history into an explorable experience across ten ancient civilizations. Generative video, cursor-aware interaction and a 23-state web experience."}, locale); }
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) { const {locale} = await params; return createPageMetadata("/projects/the-magical-book", {title: "The Magical Book", description: "The Magical Book by Sinda Khenine: explore ten ancient civilizations through an interactive book, generated video and responsive browser scenes."}, locale); }
 const M="/media/magical-book";
 const worlds=[
   {id:"carthage",name:"Carthage",period:"c. 9th to 2nd century BCE",tagline:"Masters of the Mediterranean."},

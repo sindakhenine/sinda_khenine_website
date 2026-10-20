@@ -3,7 +3,7 @@ import {getCopy} from "@/i18n/server";
 import {useCopy} from "@/i18n/use-copy";
 import {createPageMetadata} from "@/lib/seo";
 import Image from "next/image";import {Link} from "@/i18n/navigation";import {ProductFrame} from "@/components/ProductFrame";
-export async function generateMetadata({params}: {params: Promise<{locale: string}>}) { const {locale} = await params; return createPageMetadata("/projects/reha", {title: "Reha", description: "Reha: a digital rehabilitation experience designed from the patient journey outward. A three-role prototype (patient, therapist, administration) built from first-hand observation and proposed to rehabilitation organizations. Never deployed in clinical operation."}, locale); }
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) { const {locale} = await params; return createPageMetadata("/projects/reha", {title: "Reha", description: "Reha by Sinda Khenine: a rehabilitation planning prototype for patients, therapists and clinic teams, built with test data and never used in clinical care."}, locale); }
 const M="/media/reha";
 function Phone({src,alt,label}:{src:string;alt:string;label:string}){
   const copy = useCopy();

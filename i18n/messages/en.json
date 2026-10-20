@@ -602,7 +602,6 @@
   "s2817e0b6": "Discover the book",
   "scbfcc7a7": "Want to talk about something you’re building?",
   "s408cd0a4": "Let’s talk",
-  "s39cbdb1a": "Grok Arena: an experimental arena for autonomous AI agents. Four players, six system agents, one shared world, role-scoped MCP tools, a deterministic engine and a 3D control room. Evidence-led case study.",
   "s6758cb53": "About · Founder of SKatalyst AI",
   "s95e43813": "Meet Sinda Khenine, founder of SKatalyst AI and Senior AI, Data & BI Engineer. From childhood curiosity to enterprise data and agent systems.",
   "s2a819d7e": "Your browser cannot play this video.",
@@ -817,7 +816,6 @@
   "s5dd7fa4a": "Ten-world system",
   "s7f4cebc6": "Watch the demo again",
   "s5347c29a": "See SKatalyst AI →",
-  "s66663962": "ChronoAtlas: an interactive magical book that turns history into an explorable experience across ten ancient civilizations. Generative video, cursor-aware interaction and a 23-state web experience.",
   "s6bda83fa": "Selected excerpts",
   "s73c41599": "From The Subconscious Architect",
   "sbadc2310": "“You are good at your life.”",
@@ -1736,7 +1734,6 @@
   "s83502821": "All screenshots on this page come from the prototype running locally on a fully synthetic dataset (fictional patient “Anna Meier”, fictional clinic “Reha-Zentrum Waldsee”). No clinic, patient or staff member is identified.",
   "s28823dd7": "SKatalyst AI →",
   "sda8a92b9": "The Magical Book →",
-  "s2fd7fb1e": "Reha: a digital rehabilitation experience designed from the patient journey outward. A three-role prototype (patient, therapist, administration) built from first-hand observation and proposed to rehabilitation organizations. Never deployed in clinical operation.",
   "safc51790": "Project 01 · Agentic AI · Data Intelligence · Application Generation · AI Engineering",
   "s2fcb441c": "Turn organizational data into context, and context into software.",
   "s3e85f6b0": "Organizations already have enormous amounts of useful data, but it is fragmented across files, databases, cloud storage, documents, reports and internal systems. SKatalyst AI is an attempt to build the layer between that raw organizational data and the software people actually need.",
@@ -2270,5 +2267,8 @@
   "sb9903a61": "Take this question with you.",
   "scf83c7a3": "Which part of your life feels chosen, and which part feels inherited?",
   "sa8cfcc90": "You do not need to answer it straight away.",
-  "s1d35f504": "Sinda Khenine, Introduction"
+  "s1d35f504": "Sinda Khenine, Introduction",
+  "sfffe51be": "Reha by Sinda Khenine: a rehabilitation planning prototype for patients, therapists and clinic teams, built with test data and never used in clinical care.",
+  "s44014254": "Grok Arena by Sinda Khenine: an experiment with autonomous AI agents, role-based MCP tools and a 3D control room. Explore the design and results.",
+  "s2668be46": "The Magical Book by Sinda Khenine: explore ten ancient civilizations through an interactive book, generated video and responsive browser scenes."
 }
