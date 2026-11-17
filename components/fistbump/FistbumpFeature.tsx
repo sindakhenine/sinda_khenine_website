@@ -29,7 +29,7 @@ export function FistbumpFeature({locale, detail = false}: {locale: string; detai
           <p className={styles.intro}>{t.intro}</p>
           <div className={styles.actions}>
             <a className={styles.primary} href={fistbumpLinks.app}>{t.open}<span aria-hidden="true">↗</span></a>
-            {detail ? <a className={styles.textLink} href="#ai-news">{t.news}<span aria-hidden="true">↓</span></a> : <Link className={styles.textLink} href="/projects/fistbump">{t.story}<span aria-hidden="true">→</span></Link>}
+            {detail ? <a className={styles.textLink} href="#reasons">{t.explore}<span aria-hidden="true">↓</span></a> : <Link className={styles.textLink} href="/projects/fistbump#reasons">{t.explore}<span aria-hidden="true">→</span></Link>}
           </div>
           <p className={styles.signIn}>{t.signIn}</p>
         </div>
