@@ -1,15 +1,17 @@
+import {FistbumpFeature} from "@/components/fistbump/FistbumpFeature";
 import {setRequestLocale} from "next-intl/server";
 import {getCopy} from "@/i18n/server";
 import {createPageMetadata} from "@/lib/seo";
 import Image from "next/image";import {Link} from "@/i18n/navigation";import {ProductFrame} from "@/components/ProductFrame";import {projects,projectHref} from "@/content/projects/projects";import {LAST_UPDATED} from "@/content/site/config";import {magicalBookCoverBlur} from "@/content/projects/magicalBookBlur";
-export async function generateMetadata({params}: {params: Promise<{locale: string}>}) { const {locale} = await params; return createPageMetadata("/projects", {title: "Projects", description: "Five projects by Sinda Khenine: SKatalyst AI, One-Person AI Company, Reha, Grok Arena and The Magical Book. Explore the systems and engineering behind them."}, locale); }
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) { const {locale} = await params; return createPageMetadata("/projects", {title: "Projects", description: "Explore Fistbump, SKatalyst AI and Sinda Khenine’s experiments in AI agents, data engineering and creative technology."}, locale); }
 export default async function Projects({params}: {params: Promise<{locale: string}>}){
   const {locale} = await params; setRequestLocale(locale); const copy = getCopy(locale);
 
   const magical=projects.find(p=>p.slug==="the-magical-book")!;const skatalyst=projects.find(p=>p.slug==="skatalyst-ai")!;const reha=projects.find(p=>p.slug==="reha")!;const grok=projects.find(p=>p.slug==="grok-arena")!;const opac=projects.find(p=>p.slug==="one-person-ai-company")!;
   return <div className="projects-page">
     <header className="shell page-hero page-hero-editorial"><p className="eyebrow">{copy("Selected work ")}<span className="last-updated-inline">{copy("· Last updated ")}{copy(LAST_UPDATED)}</span></p><h1>{copy("Projects and experiments.")}</h1><p className="lede">{copy("Some of these projects are products. Others are experiments I built to answer a question. Here’s what works, what I learned and what still needs work.")}</p></header>
-    <div className="shell project-index-list">
+    <FistbumpFeature locale={locale}/>
+    <div className="shell project-index-list" style={{paddingTop: 64}}>
       <article className="project-product" id="skatalyst-ai">
         <div className="project-product-copy">
           <p className="project-index-number" aria-hidden="true">01</p>

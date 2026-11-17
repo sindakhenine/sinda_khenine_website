@@ -2,6 +2,7 @@ import {setRequestLocale} from "next-intl/server";
 import {getCopy} from "@/i18n/server";
 import {createPageMetadata} from "@/lib/seo";
 import Image from "next/image";import {Link} from "@/i18n/navigation";import {MediaVideo} from "@/components/MediaVideo";import {TrackedLink} from "@/components/TrackedLink";import {projects,projectHref} from "@/content/projects/projects";import {magicalBookCoverBlur} from "@/content/projects/magicalBookBlur";
+import {FistbumpFeature} from "@/components/fistbump/FistbumpFeature";
 import {BookFeature} from "@/components/book/BookFeature";
 import {siteConfig} from "@/content/site/config";
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}) { const {locale} = await params; return createPageMetadata("/", {title: siteConfig.title, description: siteConfig.description}, locale); }
@@ -35,6 +36,7 @@ const featured=projects.filter(p=>p.featured);return <div className="home-page">
     <Link href="/writing"><span>03</span>{copy("Writing")}<span aria-hidden="true">↗</span></Link>
     <Link href="/book"><span>04</span>{copy("The book")}<span aria-hidden="true">↗</span></Link>
   </nav>
+  <FistbumpFeature locale={locale}/>
   <section className="featured-presentation home-film"><div className="shell">
     <div className="section-head" data-reveal><div><p className="eyebrow">{copy("A short introduction")}</p><h2>{copy("A few things I’m working on.")}</h2></div><p>{copy("A quick look at my work in data, SKatalyst AI and the book I’m writing.")}</p></div>
     <div className="home-film-frame" data-reveal><MediaVideo src="/assets/sinda_presentation.mp4" poster="/assets/sinda-introduction-poster.jpg" label={copy("An introduction to Sinda Khenine’s work")}/></div>

@@ -44,8 +44,8 @@ describe("multilingual public website", () => {
     expect(metadata.title).toEqual({absolute:"Mentions légales | Sinda Khenine"});
     expect(metadata.alternates).toEqual({canonical:"https://sindakhenine.com/fr/imprint",languages:{en:"https://sindakhenine.com/imprint",de:"https://sindakhenine.com/de/imprint",fr:"https://sindakhenine.com/fr/imprint","x-default":"https://sindakhenine.com/imprint"}});
     const entries = sitemap();
-    expect(entries).toHaveLength(69);
-    expect(new Set(entries.map(entry => entry.url)).size).toBe(69);
+    expect(entries).toHaveLength(72);
+    expect(new Set(entries.map(entry => entry.url)).size).toBe(72);
     for (const entry of entries) expect(Object.keys(entry.alternates!.languages!)).toEqual(["en", "de", "fr"]);
   });
 });

@@ -8,5 +8,5 @@ const routes = ["/", "/about", "/projects", "/speaking", "/writing", "/book", "/
 const lastModified = new Date("2026-10-19");
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [...new Set([...routes, ...projects.map(projectHref)])].flatMap(path => locales.map(locale => ({url: canonicalUrl(localizedPath(path, locale)), lastModified, alternates: {languages: Object.fromEntries(locales.map(language => [language, canonicalUrl(localizedPath(path, language))]))}})));
+  return [...new Set([...routes, ...projects.map(projectHref)])].flatMap(path => locales.map(locale => ({url: canonicalUrl(localizedPath(path, locale)), lastModified: ["/", "/projects", "/projects/fistbump"].includes(path) ? new Date("2026-11-17") : lastModified, alternates: {languages: Object.fromEntries(locales.map(language => [language, canonicalUrl(localizedPath(path, language))]))}})));
 }

@@ -1,4 +1,4 @@
-export const LAST_UPDATED = "October 2026";
+export const LAST_UPDATED = "November 2026";
 
 export const siteConfig = {
   name: "Sinda Khenine",
