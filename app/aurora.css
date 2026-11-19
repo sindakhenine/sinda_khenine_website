@@ -271,3 +271,7 @@ section.hx-stats{border-top:0;padding:clamp(40px,5vw,64px) 0 18px}
   .pj-phone{right:3%;bottom:-5%}
 }
 @media(prefers-reduced-motion:reduce){.pj-card,.pj-frame{transition:none}.pj-card:hover{transform:none}.pj-frame,.pj-card:nth-child(even) .pj-frame{transform:none}}
+
+/* ---- Case studies: one button, one type system ---- */
+:is(.sk-button,.rh-button,.ga-button,.op-button,.mb-button-gold).button.primary{background:var(--grad-btn)!important;background-origin:border-box!important;color:#1a0b02!important;border-color:transparent!important;box-shadow:0 16px 36px -16px color-mix(in srgb,var(--a1) 90%,transparent)}
+:is(.sk-page,.rh-page,.ga-page,.op-page,.mb-page) :is(h1,h2,h3){font-family:var(--font-display),system-ui,sans-serif}
