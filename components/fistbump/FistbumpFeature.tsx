@@ -10,7 +10,7 @@ export function FistbumpFeature({locale,detail=false}:{locale:string;detail?:boo
   const campaign=getFistbumpCampaign(locale);
   const Heading=detail ? "h1" : "h2";
   const learnContent=<><span className={styles.pathNumber}>02</span><span><strong>{t.learn}</strong><small>{t.learnShort}</small></span><span aria-hidden="true">↗</span></>;
-  return <section id="fistbump" className={detail ? styles.feature : `${styles.feature} ${styles.site}`} aria-labelledby="fistbump-title"><div className="shell">
+  return <section id="fistbump" className={`${styles.feature} ${styles.site}`} aria-labelledby="fistbump-title"><div className="shell">
     <div className={styles.topline}><span>{t.label}</span><span className={styles.live}><i/>{t.live}</span></div>
     <div className={styles.featureGrid}>
       <div className={styles.featureCopy}>
@@ -29,7 +29,7 @@ export function FistbumpFeature({locale,detail=false}:{locale:string;detail?:boo
     <div className={styles.paths}>
       <a href={fistbumpLinks.news}><span className={styles.pathNumber}>01</span><span><strong>{t.news}</strong><small>{t.newsShort}</small></span><span aria-hidden="true">↗</span></a>
       {detail ? <a href="#learn">{learnContent}</a> : <Link href="/projects/fistbump#learn">{learnContent}</Link>}
-      <a href={fistbumpLinks.app}><span className={styles.pathNumber}>03</span><span><strong>{t.meet}</strong><small>{t.meetShort}</small></span><span aria-hidden="true">↗</span></a>
+      <a href={fistbumpLinks.practice}><span className={styles.pathNumber}>03</span><span><strong>{t.practice}</strong><small>{t.practiceShort}</small></span><span aria-hidden="true">↗</span></a>
     </div>
   </div></section>;
 }

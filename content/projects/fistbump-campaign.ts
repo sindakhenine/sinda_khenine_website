@@ -14,7 +14,7 @@ const en: FistbumpCampaign = {
     {id:"drizzle",name:"Drizzle",label:"Build & learn",title:"Give that idea a first version.",description:"Find online and in-person hackathons. Choose a challenge that makes you want to build.",action:"Find a hackathon",href:"https://app.fistbump.world/?open=hackathons",width:280,height:461},
     {id:"echo",name:"Echo",label:"Try new apps",title:"Someone made something worth trying.",description:"Discover community apps, try them out and tell their makers what you think.",action:"Explore community apps",href:"https://app.fistbump.world/?open=discover",width:329,height:535},
     {id:"astro",name:"Astro",label:"Follow AI",title:"Your AI reading starts here.",description:"New models, research and releases from OpenAI, Anthropic, Google DeepMind and more. Go straight to the source.",action:"Explore AI news",href:"https://app.fistbump.world/?open=news",width:302,height:498},
-    {id:"daisy",name:"Daisy",label:"Meet people",title:"Turn a familiar profile into a hello.",description:"Find your X connections on the map. Suggest a coffee, a walk or something to build together.",action:"Find your people",href:"https://app.fistbump.world/",width:374,height:502},
+    {id:"daisy",name:"Daisy",label:"Build together",title:"Find someone to build with.",description:"See which of your X connections are on Fistbump and invite one to work on an idea together.",action:"Find builders",href:"https://app.fistbump.world/",width:374,height:502},
     {id:"sleuth",name:"Sleuth",label:"Find events",title:"There’s a room you’d like to be in.",description:"Discover AI meetups, demo nights and talks. Find an event and follow its registration link.",action:"Discover events",href:"https://app.fistbump.world/?open=events",width:325,height:537},
   ],
 };
@@ -32,7 +32,7 @@ const de: FistbumpCampaign = {
     {...en.guides[0],label:"Bauen & lernen",title:"Mach aus deiner Idee eine erste Version.",description:"Finde Hackathons online und vor Ort. Wähle eine Herausforderung, für die du etwas entwickeln möchtest.",action:"Einen Hackathon finden"},
     {...en.guides[1],label:"Apps testen",title:"Jemand hat etwas gebaut. Probier es aus.",description:"Entdecke Community-Apps, teste sie und sag den Entwicklern, was du denkst.",action:"Community-Apps entdecken"},
     {...en.guides[2],label:"KI entdecken",title:"Hier beginnt dein Blick auf KI.",description:"Neue Modelle, Forschung und Updates von OpenAI, Anthropic, Google DeepMind und anderen. Direkt zur Quelle.",action:"KI-News entdecken"},
-    {...en.guides[3],label:"Leute treffen",title:"Vom bekannten Profil zum ersten Hallo.",description:"Finde deine X-Kontakte auf der Karte. Schlage einen Kaffee, einen Spaziergang oder ein gemeinsames Projekt vor.",action:"Deine Leute finden"},
+    {...en.guides[3],label:"Gemeinsam bauen",title:"Finde jemanden für dein Projekt.",description:"Sieh, welche deiner X-Kontakte auf Fistbump sind, und lade jemanden ein, gemeinsam an einer Idee zu arbeiten.",action:"Mitstreiter finden"},
     {...en.guides[4],label:"Events finden",title:"Finde eine Veranstaltung, die zu dir passt.",description:"Entdecke KI-Meetups, Demo-Abende und Vorträge. Sieh dir ein Event an und folge dem Link zur Anmeldung.",action:"Events entdecken"},
   ],
 };
@@ -50,7 +50,7 @@ const fr: FistbumpCampaign = {
     {...en.guides[0],label:"Créer & apprendre",title:"Donnez une première version à votre idée.",description:"Trouvez des hackathons en ligne ou sur place. Choisissez un défi qui vous donne envie de créer.",action:"Trouver un hackathon"},
     {...en.guides[1],label:"Essayer des apps",title:"Quelqu’un a créé quelque chose. Essayez-le.",description:"Découvrez les applications de la communauté, testez-les et partagez votre avis avec leurs créateurs.",action:"Découvrir les applications"},
     {...en.guides[2],label:"Suivre l’IA",title:"Votre lecture de l’IA commence ici.",description:"Nouveaux modèles, recherche et annonces d’OpenAI, Anthropic, Google DeepMind et d’autres acteurs. Directement à la source.",action:"Explorer l’actualité IA"},
-    {...en.guides[3],label:"Se rencontrer",title:"D’un profil familier à un vrai bonjour.",description:"Retrouvez vos contacts X sur la carte. Proposez un café, une balade ou un projet à construire ensemble.",action:"Retrouver vos contacts"},
+    {...en.guides[3],label:"Créer ensemble",title:"Trouvez avec qui créer.",description:"Voyez lesquels de vos contacts X sont sur Fistbump et invitez-en un à travailler sur une idée avec vous.",action:"Trouver des créateurs"},
     {...en.guides[4],label:"Trouver un événement",title:"Trouvez une salle où vous aimeriez être.",description:"Découvrez des rencontres IA, soirées démo et conférences, puis suivez leur lien d’inscription.",action:"Découvrir les événements"},
   ],
 };

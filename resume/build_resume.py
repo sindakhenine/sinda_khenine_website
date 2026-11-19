@@ -86,7 +86,7 @@ def styles():
     s['sec'] = ParagraphStyle('sec', fontName='Helvetica-Bold', fontSize=8, leading=10, textColor=VIOLET, spaceBefore=5.2 * mm, spaceAfter=2.6 * mm)
     s['h3'] = ParagraphStyle('h3', fontName='Helvetica-Bold', fontSize=10.4, leading=13, textColor=INK, spaceAfter=.5 * mm)
     s['meta'] = ParagraphStyle('meta', fontName='Helvetica', fontSize=8.4, leading=11, textColor=MUTED, spaceAfter=1.4 * mm)
-    s['small'] = ParagraphStyle('small', fontName='Helvetica', fontSize=8.6, leading=11.8, textColor=colors.HexColor('#3b394e'), spaceAfter=1 * mm)
+    s['small'] = ParagraphStyle('small', fontName='Helvetica', fontSize=8.5, leading=11.3, textColor=colors.HexColor('#3b394e'), spaceAfter=1 * mm)
     s['bullet'] = ParagraphStyle('bullet', parent=s['small'], leftIndent=3.4 * mm, bulletIndent=.4 * mm, spaceAfter=.6 * mm)
     s['tag'] = ParagraphStyle('tag', fontName='Helvetica-Bold', fontSize=6.8, leading=9, textColor=VIOLET, spaceAfter=.6 * mm)
     s['ssec'] = ParagraphStyle('ssec', fontName='Helvetica-Bold', fontSize=7.6, leading=10, textColor=SIDE_ACCENT, spaceBefore=6 * mm, spaceAfter=2.6 * mm)
@@ -157,7 +157,7 @@ def build(lang):
         if tag: parts.append(Paragraph(spaced(tag), S['tag']))
         parts.append(Paragraph(link(title, url) if url else title, S['h3']))
         if text: parts.append(Paragraph(text, S['small']))
-        parts.append(Spacer(1, 2.2 * mm))
+        parts.append(Spacer(1, 1.7 * mm))
         return KeepTogether(parts)
     def side_item(title, text='', tag='', url=None):
         parts = []
@@ -240,7 +240,7 @@ def build(lang):
 
     # ---- Page 2, main
     story += [sec(t('Selected AI projects', 'Ausgewählte KI-Projekte', 'Projets IA sélectionnés'))]
-    story.append(item('Fistbump', t('Creator, product design and engineering. A live web app to meet your X connections in person and discover AI news, model releases and research linked to original sources.') + ' React, TypeScript, Expo, Supabase.', 'Live · fistbump.world', 'https://fistbump.world/'))
+    story.append(item('Fistbump', t('Creator, product design and engineering. A live web app to follow AI news, model releases and research from the original sources, try community apps and find hackathons and events to learn by doing.') + ' React, TypeScript, Expo, Supabase.', 'Live · fistbump.world', 'https://fistbump.world/'))
     story.append(item('SKatalyst AI', t('Founder, AI architecture and engineering. An agentic platform for structured context and customer-owned applications, with human approval gates and data-derived validation. Private Beta.'), 'Private Beta · skatalystai.com', 'https://sindakhenine.com/projects/skatalyst-ai'))
     story.append(item('One-Person AI Company', t('Designed and ran a 24-hour agent orchestration experiment with validated decisions, claim verification and persistent event logs. Final synthesis at T+24h with three human interventions. Local experiment.'), local, 'https://sindakhenine.com/projects/one-person-ai-company'))
     story.append(item('Grok Arena', t('Ten agent roles, 30 role-scoped MCP tools and an orchestrator with persistent sessions. A seven-agent run executed the council chain; a full external-agent match remains unproven. Local experiment.'), local, 'https://sindakhenine.com/projects/grok-arena'))

@@ -307,4 +307,9 @@ const fr: FistbumpBenefitsCopy = {
   ]
 };
 
-export function getFistbumpBenefits(locale: string): FistbumpBenefitsCopy { return locale === "de" ? de : locale === "fr" ? fr : en; }
+// AI news and learning lead; meeting people and play come after.
+const order = ["ai-news", "apps", "hackathons", "events", "programs", "collaborate", "meet", "play"];
+export function getFistbumpBenefits(locale: string): FistbumpBenefitsCopy {
+  const copy = locale === "de" ? de : locale === "fr" ? fr : en;
+  return {...copy, items: order.map(id => copy.items.find(item => item.id === id)!)};
+}

@@ -13,13 +13,13 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "fistbump", title: "Fistbump", category: "Live web app", discipline: "Social Product / AI News / Community",
-    tagline: "Meet the people. Follow the ideas.", href: "/projects/fistbump",
-    summary: "Meet your X connections in person and discover AI news, model releases and research linked to original sources.",
+    slug: "fistbump", title: "Fistbump", category: "Live web app", discipline: "AI News / Learning by Doing / Community",
+    tagline: "Follow AI. Learn by building.", href: "/projects/fistbump",
+    summary: "Follow AI news, model releases and research from the original sources, try community apps and find hackathons, events and startup programs to learn by doing.",
     role: "Creator, product design and engineering",
-    problem: "Online conversations can stay online, while useful AI announcements are scattered across company websites.",
+    problem: "Useful AI announcements are scattered across company websites, and it is hard to know what to try or build next.",
     constraints: ["Keep meeting invitations explicit", "Link news back to its original source", "Show city or country rather than precise locations"],
-    approach: "Combine a map of X connections, invitations and chat with a Discover section for AI news, events and projects.",
+    approach: "Bring AI news, community apps, hackathons, events and programs into one Discover section, next to a map of X connections for people who want to build together.",
     technologies: ["React", "TypeScript", "Expo", "Supabase"],
     decisions: ["Open a chat after an invitation is accepted", "Show source headlines, dates and links for AI news"],
     tradeoffs: "X sign-in keeps the initial community connected to an existing network and requires an X account.",
