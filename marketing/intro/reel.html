@@ -4,9 +4,9 @@
 <html lang="en"><head><meta charset="utf-8"><title>Sinda Khenine intro reel</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=block" rel="stylesheet">
 <style>
-:root{--t:0;--a1:#6d4dff;--a2:#c14dff;--a3:#19c2ea;--grad:linear-gradient(100deg,#a08aff,#e58bff 48%,#5fe0ff)}
+:root{--t:0;--a1:#ff5a1f;--a2:#ff8a1f;--a3:#ffc23d;--grad:linear-gradient(100deg,#ff6a2b,#ff9838 48%,#ffc857)}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1920px;height:1080px;overflow:hidden;background:#07060f;color:#f3f1fb;font-family:"Space Grotesk",system-ui,sans-serif}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#0b0b0c;color:#f5f3ee;font-family:"Space Grotesk",system-ui,sans-serif}
 .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.5}
 .o1{width:900px;height:900px;left:-240px;top:-300px;background:var(--a1);transform:translate(calc(sin(var(--t)*.35)*110px),calc(cos(var(--t)*.3)*80px))}
 .o2{width:780px;height:780px;right:-200px;top:60px;background:var(--a2);opacity:.38;transform:translate(calc(cos(var(--t)*.28)*-120px),calc(sin(var(--t)*.33)*90px))}
@@ -15,8 +15,8 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#07060f;color:#f
 .scene{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:150px 130px 110px}
 .bar{position:absolute;left:0;bottom:0;height:8px;width:calc(var(--t)/25*100%);background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3))}
 .mark{position:absolute;left:130px;top:64px;display:flex;align-items:center;gap:16px;font-size:26px;font-weight:600;letter-spacing:-.02em;opacity:.9}
-.mark i{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(100deg,#5b3ff0,#a23df0 55%,#2b6cf3);font:500 16px "JetBrains Mono";font-style:normal}
-.count{position:absolute;right:130px;top:74px;font:500 20px "JetBrains Mono";letter-spacing:.14em;color:#a7a4bd}
+.mark i{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(100deg,#ff5a1f,#ff7a1f 55%,#ff9a2e);font:500 16px "JetBrains Mono";font-style:normal;color:#1a0b02}
+.count{position:absolute;right:130px;top:74px;font:500 20px "JetBrains Mono";letter-spacing:.14em;color:#a8a6a0}
 /* timed entrance: --s is the start time in seconds, --d the duration */
 .a{animation-duration:calc(var(--d,.9)*1s);animation-delay:calc((var(--s) - var(--t))*1s);animation-fill-mode:both;animation-play-state:paused;animation-timing-function:cubic-bezier(.22,1,.36,1)}
 .rise{animation-name:rise}.pop{animation-name:pop}.left{animation-name:left}.right{animation-name:right}.drop{animation-name:drop}.wipe{animation-name:wipe}.zoom{animation-name:zoom;animation-timing-function:linear}
@@ -27,31 +27,31 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#07060f;color:#f
 @keyframes drop{from{opacity:0;transform:translateY(-160px) rotate(14deg)}to{opacity:1;transform:rotate(-6deg)}}
 @keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.09)}}
-.eyebrow{font:500 24px "JetBrains Mono";letter-spacing:.2em;text-transform:uppercase;color:#b9a8ff;margin-bottom:34px;display:flex;align-items:center;gap:18px}
+.eyebrow{font:500 24px "JetBrains Mono";letter-spacing:.2em;text-transform:uppercase;color:#ff9466;margin-bottom:34px;display:flex;align-items:center;gap:18px}
 .eyebrow::before{content:"";width:54px;height:3px;background:var(--grad)}
 h1{font-size:150px;line-height:.95;letter-spacing:-.055em;font-weight:700}
 h2{font-size:118px;line-height:.98;letter-spacing:-.05em;font-weight:700}
 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
-.sub{font-size:44px;line-height:1.25;color:#c9c6dd;font-weight:500;letter-spacing:-.02em;margin-top:38px;max-width:20em}
+.sub{font-size:44px;line-height:1.25;color:#cfccc4;font-weight:500;letter-spacing:-.02em;margin-top:38px;max-width:20em}
 .chips{display:flex;flex-wrap:wrap;gap:18px;margin-top:50px}
 .chip{padding:18px 30px;border:2px solid #ffffff30;border-radius:999px;background:#ffffff12;font-size:32px;font-weight:500;white-space:nowrap}
-.chip.hot{border-color:transparent;background:linear-gradient(100deg,#5b3ff0,#a23df0 55%,#2b6cf3)}
+.chip.hot{color:#1a0b02;border-color:transparent;background:linear-gradient(100deg,#ff5a1f,#ff7a1f 55%,#ff9a2e)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
-.frame{border-radius:36px;overflow:hidden;border:2px solid #ffffff2e;box-shadow:0 60px 140px -30px #6d4dffb0,0 0 0 1px #0006}
+.frame{border-radius:36px;overflow:hidden;border:2px solid #ffffff2e;box-shadow:0 60px 140px -30px #ff5a1fb0,0 0 0 1px #0006}
 .frame img{display:block;width:100%;height:100%;object-fit:cover}
-.polaroid{width:640px;padding:22px 22px 0;background:#fff;border-radius:22px;box-shadow:0 60px 120px -30px #000c;color:#12111f;justify-self:center}
+.polaroid{width:640px;padding:22px 22px 0;background:#fff;border-radius:22px;box-shadow:0 60px 120px -30px #000c;color:#141413;justify-self:center}
 .polaroid img{display:block;width:100%;border-radius:10px}.polaroid p{font-size:34px;font-weight:500;padding:22px 8px 26px}
 .big{font-size:330px;line-height:.8;font-weight:700;letter-spacing:-.07em}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:60px}
-.card{border-radius:32px;overflow:hidden;border:2px solid #ffffff26;background:#14132580}
+.card{border-radius:32px;overflow:hidden;border:2px solid #ffffff26;background:#18181a80}
 .card div.img{height:300px;overflow:hidden}.card img{display:block;width:100%;height:100%;object-fit:cover}
-.card h3{font-size:46px;letter-spacing:-.03em;padding:28px 30px 8px}.card p{font-size:27px;line-height:1.3;color:#c9c6dd;padding:0 30px 30px}
+.card h3{font-size:46px;letter-spacing:-.03em;padding:28px 30px 8px}.card p{font-size:27px;line-height:1.3;color:#cfccc4;padding:0 30px 30px}
 .card small{display:inline-block;margin:26px 30px 0;font:500 19px "JetBrains Mono";letter-spacing:.14em;text-transform:uppercase;color:#7df0c2}
-.book{justify-self:center;width:440px;border-radius:14px;box-shadow:0 70px 150px -30px #c14dffb5,0 0 0 2px #ffffff22}
+.book{justify-self:center;width:440px;border-radius:14px;box-shadow:0 70px 150px -30px #ff8a1fb5,0 0 0 2px #ffffff22}
 .end{display:grid;grid-template-columns:auto 1fr;gap:100px;align-items:center}
-.ring{width:520px;height:520px;border-radius:50%;padding:8px;background:conic-gradient(from calc(var(--t)*40deg),var(--a1),var(--a2),var(--a3),var(--a1));box-shadow:0 0 140px #6d4dff90}
+.ring{width:520px;height:520px;border-radius:50%;padding:8px;background:conic-gradient(from calc(var(--t)*40deg),var(--a1),var(--a2),var(--a3),var(--a1));box-shadow:0 0 140px #ff5a1f90}
 .ring img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover}
-.url{margin-top:54px;font:500 34px "JetBrains Mono";letter-spacing:.06em;color:#b9a8ff}
+.url{margin-top:54px;font:500 34px "JetBrains Mono";letter-spacing:.06em;color:#ff9466}
 </style></head><body>
 <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="grid"></div>
 <div class="mark"><i>SK</i>Sinda Khenine</div><div class="count" id="count"></div>
@@ -95,7 +95,7 @@ h2{font-size:118px;line-height:.98;letter-spacing:-.05em;font-weight:700}
 
 <section class="scene" data-s="21.3" data-e="25.5"><div class="end">
   <div class="ring a pop" style="--s:21.4;--d:1"><img src="../../public/assets/sinda_picture.jpeg"></div>
-  <div><h1 class="a rise" style="--s:21.7">Sinda<br><span class="g">Khenine</span></h1><p class="sub a rise" style="--s:22.3;color:#f3f1fb" data-k="s7sub"></p><p class="url a wipe" style="--s:22.9;--d:1.1">sindakhenine.com</p></div>
+  <div><h1 class="a rise" style="--s:21.7">Sinda<br><span class="g">Khenine</span></h1><p class="sub a rise" style="--s:22.3;color:#f5f3ee" data-k="s7sub"></p><p class="url a wipe" style="--s:22.9;--d:1.1">sindakhenine.com</p></div>
 </div></section>
 <div class="bar"></div>
 <script>

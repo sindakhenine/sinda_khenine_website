@@ -187,15 +187,15 @@
 }
 
 /* Site palette for the feature band: deep violet night instead of olive and gold. The preview pages stay paper. */
-.feature, :global(html[data-theme="dark"]) .feature { --book-bg: #0a0916; --book-text: #f3f1fb; --book-muted: #b4b1cb; --book-gold: #b9a8ff; --book-line: #2b2942; }
+.feature, :global(html[data-theme="dark"]) .feature { --book-bg: #0b0b0c; --book-text: #f5f3ee; --book-muted: #b5b2aa; --book-gold: #ff9466; --book-line: #2c2b28; }
 .feature::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(46% 70% at 12% 100%, color-mix(in srgb, var(--a1) 42%, transparent), transparent 70%), radial-gradient(40% 60% at 96% 0%, color-mix(in srgb, var(--a2) 26%, transparent), transparent 70%); }
 .editionLine, .featureFoot { font-family: var(--font-mono), monospace; }
 .statusDot { width: 7px; height: 7px; background: #19d38c; }
-.stagePlan { color: #b9a8ff; opacity: .22; }
+.stagePlan { color: #ff9466; opacity: .22; }
 .stage::after { background: color-mix(in srgb, var(--a1) 60%, #000); opacity: .7; filter: blur(34px); }
 .title { font-family: var(--font-display), system-ui, sans-serif; font-weight: 600; letter-spacing: -.05em; }
 .invitation { font-family: var(--font-display), system-ui, sans-serif; font-weight: 500; letter-spacing: -.02em; }
-.openButton { border: 1px solid transparent; border-radius: 999px; padding-inline: 26px; color: #fff; background: var(--grad-btn); background-origin: border-box; font-weight: 600; box-shadow: 0 16px 36px -16px var(--a1); transition: transform .2s ease, box-shadow .2s ease; }
+.openButton { border: 1px solid transparent; border-radius: 999px; padding-inline: 26px; color:#1a0b02; background: var(--grad-btn); background-origin: border-box; font-weight: 600; box-shadow: 0 16px 36px -16px var(--a1); transition: transform .2s ease, box-shadow .2s ease; }
 .openButton:hover { background: var(--grad-btn); background-origin: border-box; box-shadow: 0 20px 44px -14px var(--a2); }
 .storyLink { border-bottom-color: #ffffff40; }
 .featureFoot > span:first-child { font-family: var(--font-display), system-ui, sans-serif; font-style: normal; font-weight: 600; font-size: 1rem; }

@@ -21,9 +21,9 @@ CATALOGUE = {lang: json.loads((ROOT / 'i18n' / 'messages' / f'{lang}.json').read
 
 W, H = A4
 SIDE = 67 * mm
-NIGHT = colors.HexColor('#0b0a17'); INK = colors.HexColor('#12111f'); MUTED = colors.HexColor('#5b5871'); LINE = colors.HexColor('#e3e0f1')
-VIOLET = colors.HexColor('#5a3ee6'); MAGENTA = colors.HexColor('#b83df0'); CYAN = colors.HexColor('#19b6e0')
-SIDE_TEXT = colors.HexColor('#ecebf7'); SIDE_MUTED = colors.HexColor('#a9a6c2'); SIDE_ACCENT = colors.HexColor('#b9a8ff'); SIDE_LINE = colors.HexColor('#2b2942')
+NIGHT = colors.HexColor('#0d0d0e'); INK = colors.HexColor('#141413'); MUTED = colors.HexColor('#5f5d57'); LINE = colors.HexColor('#e4e1d8')
+ACCENT = colors.HexColor('#c8400a'); ACCENT_MID = colors.HexColor('#f06a12'); ACCENT_END = colors.HexColor('#ffb020')
+SIDE_TEXT = colors.HexColor('#f0eee8'); SIDE_MUTED = colors.HexColor('#a8a6a0'); SIDE_ACCENT = colors.HexColor('#ff9466'); SIDE_LINE = colors.HexColor('#2c2b28')
 
 EMAIL = 'founder@skatalystai.com'
 LINKS = {
@@ -70,7 +70,7 @@ def portrait():
     im = im.crop(((w - s) // 2, (h - s) // 2, (w + s) // 2, (h + s) // 2)).resize((size, size), PILImage.LANCZOS)
     mask = PILImage.new('L', (size * 3, size * 3), 0)
     ImageDraw.Draw(mask).ellipse((0, 0, size * 3 - 1, size * 3 - 1), fill=255)
-    round_photo = PILImage.new('RGB', (size, size), '#0b0a17')
+    round_photo = PILImage.new('RGB', (size, size), '#0d0d0e')
     round_photo.paste(im, (0, 0), mask.resize((size, size), PILImage.LANCZOS))
     round_photo.save(out, quality=90)
     return out
@@ -80,15 +80,15 @@ def styles():
     base = dict(fontName='Helvetica', textColor=INK)
     s = {}
     s['name'] = ParagraphStyle('name', fontName='Helvetica-Bold', fontSize=31, leading=32, textColor=INK, spaceAfter=3.2 * mm)
-    s['role'] = ParagraphStyle('role', fontName='Helvetica-Bold', fontSize=10.6, leading=14, textColor=VIOLET)
+    s['role'] = ParagraphStyle('role', fontName='Helvetica-Bold', fontSize=10.6, leading=14, textColor=ACCENT)
     s['role2'] = ParagraphStyle('role2', fontName='Helvetica', fontSize=9.6, leading=13, textColor=MUTED, spaceAfter=4.5 * mm)
     s['body'] = ParagraphStyle('body', fontSize=9, leading=12.6, spaceAfter=1.6 * mm, **base)
-    s['sec'] = ParagraphStyle('sec', fontName='Helvetica-Bold', fontSize=8, leading=10, textColor=VIOLET, spaceBefore=5.2 * mm, spaceAfter=2.6 * mm)
+    s['sec'] = ParagraphStyle('sec', fontName='Helvetica-Bold', fontSize=8, leading=10, textColor=ACCENT, spaceBefore=5.2 * mm, spaceAfter=2.6 * mm)
     s['h3'] = ParagraphStyle('h3', fontName='Helvetica-Bold', fontSize=10.4, leading=13, textColor=INK, spaceAfter=.5 * mm)
     s['meta'] = ParagraphStyle('meta', fontName='Helvetica', fontSize=8.4, leading=11, textColor=MUTED, spaceAfter=1.4 * mm)
-    s['small'] = ParagraphStyle('small', fontName='Helvetica', fontSize=8.5, leading=11.3, textColor=colors.HexColor('#3b394e'), spaceAfter=1 * mm)
+    s['small'] = ParagraphStyle('small', fontName='Helvetica', fontSize=8.5, leading=11.3, textColor=colors.HexColor('#3a3936'), spaceAfter=1 * mm)
     s['bullet'] = ParagraphStyle('bullet', parent=s['small'], leftIndent=3.4 * mm, bulletIndent=.4 * mm, spaceAfter=.6 * mm)
-    s['tag'] = ParagraphStyle('tag', fontName='Helvetica-Bold', fontSize=6.8, leading=9, textColor=VIOLET, spaceAfter=.6 * mm)
+    s['tag'] = ParagraphStyle('tag', fontName='Helvetica-Bold', fontSize=6.8, leading=9, textColor=ACCENT, spaceAfter=.6 * mm)
     s['ssec'] = ParagraphStyle('ssec', fontName='Helvetica-Bold', fontSize=7.6, leading=10, textColor=SIDE_ACCENT, spaceBefore=6 * mm, spaceAfter=2.6 * mm)
     s['sbody'] = ParagraphStyle('sbody', fontName='Helvetica', fontSize=8.4, leading=11.6, textColor=SIDE_TEXT, spaceAfter=1.5 * mm)
     s['slabel'] = ParagraphStyle('slabel', fontName='Helvetica', fontSize=6.6, leading=8.6, textColor=SIDE_MUTED, spaceAfter=.2 * mm)
@@ -106,7 +106,7 @@ def spaced(text):
 def gradient(canvas, x, y, w, h):
     canvas.saveState()
     p = canvas.beginPath(); p.rect(x, y, w, h); canvas.clipPath(p, stroke=0, fill=0)
-    canvas.linearGradient(x, y, x + w, y, (VIOLET, MAGENTA, CYAN), extend=True)
+    canvas.linearGradient(x, y, x + w, y, (ACCENT, ACCENT_MID, ACCENT_END), extend=True)
     canvas.restoreState()
 
 
@@ -118,7 +118,7 @@ def build(lang):
     doc_title = {'en': 'Sinda Khenine · Resume', 'de': 'Sinda Khenine · Lebenslauf', 'fr': 'Sinda Khenine · CV'}[lang]
     updated = {'en': 'Updated November 2026', 'de': 'Stand: November 2026', 'fr': 'Mis à jour en novembre 2026'}[lang]
 
-    def link(text, url, color='#12111f'):
+    def link(text, url, color='#141413'):
         return f'<link href="{url}" color="{color}">{text}</link>'
 
     def page(canvas, doc):
@@ -129,7 +129,7 @@ def build(lang):
         if doc.page == 1:
             d = 39 * mm; x = (SIDE - d) / 2; y = H - 17 * mm - d
             canvas.drawImage(str(photo), x, y, d, d)
-            canvas.setStrokeColor(VIOLET); canvas.setLineWidth(.7 * mm); canvas.circle(SIDE / 2, y + d / 2, d / 2 + 1 * mm, fill=0, stroke=1)
+            canvas.setStrokeColor(ACCENT); canvas.setLineWidth(.7 * mm); canvas.circle(SIDE / 2, y + d / 2, d / 2 + 1 * mm, fill=0, stroke=1)
         canvas.setFont('Helvetica', 6.8); canvas.setFillColor(SIDE_MUTED)
         canvas.drawString(9 * mm, 8 * mm, updated)
         canvas.setFillColor(MUTED)
@@ -151,7 +151,7 @@ def build(lang):
 
     def sec(text): return Paragraph(spaced(text), S['sec'])
     def ssec(text): return Paragraph(spaced(text), S['ssec'])
-    def contact(label, text, url): return [Paragraph(label.upper(), S['slabel']), Paragraph(link(text, url, '#ecebf7'), S['sbody'])]
+    def contact(label, text, url): return [Paragraph(label.upper(), S['slabel']), Paragraph(link(text, url, '#f0eee8'), S['sbody'])]
     def item(title, text='', tag='', url=None):
         parts = []
         if tag: parts.append(Paragraph(spaced(tag), S['tag']))
@@ -188,7 +188,7 @@ def build(lang):
     story += [Paragraph(t('Location', 'Standort', 'Localisation').upper(), S['slabel']), Paragraph(germany, S['sbody'])]
     story += [ssec(t('Selected Expertise'))]
     for line in ['AI orchestration and agent systems', 'Context engineering and RAG', 'MCP and bounded tool use', 'Agent evaluation and observability', 'Frontier AI coding agents', 'Enterprise data architecture', 'Apache Spark and data pipelines', 'Business intelligence and analytics', 'Machine learning and forecasting', 'Document understanding and validation']:
-        story.append(Paragraph(f'<font color="#b9a8ff">+</font>&nbsp;&nbsp;{t(line)}', ParagraphStyle('sx', parent=S['sbody'], leftIndent=3.6 * mm, firstLineIndent=-3.6 * mm, spaceAfter=1.1 * mm)))
+        story.append(Paragraph(f'<font color="#ff9466">+</font>&nbsp;&nbsp;{t(line)}', ParagraphStyle('sx', parent=S['sbody'], leftIndent=3.6 * mm, firstLineIndent=-3.6 * mm, spaceAfter=1.1 * mm)))
     story += [ssec(t('Education'))]
     story.append(side_item(t('Engineering Degree · Big Data & Business Intelligence'), f"Ecole Polytechnique Internationale<br/>2018 {to} 2020 · {t('Grade: Very Good', 'Note: Sehr gut', 'Mention : Très bien')}"))
     story.append(side_item(t('Engineering studies · Computer Science'), f'ESPRIT<br/>2017 {to} 2018'))
