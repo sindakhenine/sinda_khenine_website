@@ -41,7 +41,7 @@ export default async function Speaking({params}: {params: Promise<{locale: strin
       <aside className={styles.articleNote}><p>{copy("Read the article behind the context engineering talk.")}</p><a href={publishedArticle.url} target="_blank" rel="noopener noreferrer">{copy("Read my article on VibeKode")} ↗</a></aside>
     </div></section>
     <section className="speaking-history plain-surface"><div className="shell">
-      <div className="history-heading"><p className="eyebrow">{copy("2025–2026 · ML Conference")}</p><h2>{copy("Earlier sessions")}</h2></div>
+      <div className="history-heading"><p className="eyebrow">{copy("2025 and 2026 · ML Conference")}</p><h2>{copy("Earlier sessions")}</h2></div>
       <div className={styles.history}>{events.slice(2).map(event => <article key={event.id}>
         <p className={styles.historyMeta}>{copy(event.location)} · {event.year}<span>{copy("Completed")}</span></p>
         <div><h3><a href={event.link} target="_blank" rel="noopener noreferrer">{copy(event.title)}</a></h3>{event.description && <p>{copy(event.description)}</p>}</div>

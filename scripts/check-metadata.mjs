@@ -23,7 +23,7 @@ for (const file of files) {
     const length = [...description].length;
     lengths.push(length);
     if (description !== description.trim() || length < 25 || length > 160) {
-      errors.push(`${file}: description is ${length} characters; expected 25–160 without surrounding whitespace`);
+      errors.push(`${file}: description is ${length} characters; expected 25 to 160 without surrounding whitespace`);
     }
     for (const selector of ['meta[property="og:description"]', 'meta[name="twitter:description"]']) {
       if (document.head.querySelector(selector)?.getAttribute("content") !== description) {
@@ -38,5 +38,5 @@ if (errors.length) {
   console.error(`Meta description validation failed:\n${errors.join("\n")}`);
   process.exitCode = 1;
 } else {
-  console.log(`Validated meta descriptions for ${files.length} public pages (${Math.min(...lengths)}–${Math.max(...lengths)} characters), including Open Graph and Twitter.`);
+  console.log(`Validated meta descriptions for ${files.length} public pages (${Math.min(...lengths)} to ${Math.max(...lengths)} characters), including Open Graph and Twitter.`);
 }
