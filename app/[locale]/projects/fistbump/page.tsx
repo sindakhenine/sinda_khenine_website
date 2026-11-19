@@ -4,6 +4,8 @@ import {FistbumpFeature} from "@/components/fistbump/FistbumpFeature";
 import {getFistbumpCopy, fistbumpLinks} from "@/content/projects/fistbump";
 import {createPageMetadata, entityIds, serializeJsonLd} from "@/lib/seo";
 import styles from "@/components/fistbump/fistbump.module.css";
+import {FistbumpLearning} from "@/components/fistbump/FistbumpLearning";
+import {getFistbumpCampaign} from "@/content/projects/fistbump-campaign";
 import {FistbumpBenefits} from "@/components/fistbump/FistbumpBenefits";
 import {getFistbumpBenefits} from "@/content/projects/fistbump-benefits";
 
@@ -23,6 +25,7 @@ export default async function FistbumpPage({params}: {params: Promise<{locale: s
     <div className="shell"><Link className={styles.back} href="/projects">← {t.back}</Link></div>
     <FistbumpFeature locale={locale} detail/>
     <div className="shell">
+      <FistbumpLearning copy={getFistbumpCampaign(locale)}/>
       <FistbumpBenefits copy={getFistbumpBenefits(locale)}/>
       <div className={styles.close}><h2>{t.closing}</h2><div className={styles.actions}><a className={styles.primary} href={fistbumpLinks.app}>{t.open} ↗</a><a href={fistbumpLinks.site}>{t.visit} ↗</a></div></div>
     </div>
