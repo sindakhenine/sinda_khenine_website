@@ -1,0 +1,110 @@
+<!doctype html>
+<!-- Source of the book reel for The Subconscious Architect. Rendered by scripts/render-reel.mjs book (?lang=en|de|fr).
+     Every animation is paused and positioned from --t, so any frame can be drawn on demand. -->
+<html lang="en"><head><meta charset="utf-8"><title>The Subconscious Architect reel</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=block" rel="stylesheet">
+<style>
+:root{--t:0;--a1:#6d4dff;--a2:#c14dff;--a3:#19c2ea;--grad:linear-gradient(100deg,#a08aff,#e58bff 48%,#5fe0ff)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#05040c;color:#f3f1fb;font-family:"Space Grotesk",system-ui,sans-serif}
+.orb{position:absolute;border-radius:50%;filter:blur(130px)}
+.o1{width:900px;height:900px;left:-300px;bottom:-420px;background:var(--a1);opacity:.42;transform:translate(calc(sin(var(--t)*.3)*120px),calc(cos(var(--t)*.26)*70px))}
+.o2{width:760px;height:760px;right:-260px;top:-260px;background:var(--a2);opacity:.26;transform:translate(calc(cos(var(--t)*.24)*-110px),calc(sin(var(--t)*.3)*90px))}
+.grid{position:absolute;inset:0;background-image:linear-gradient(#b9a8ff14 1px,transparent 1px),linear-gradient(90deg,#b9a8ff14 1px,transparent 1px),linear-gradient(#b9a8ff0a 1px,transparent 1px),linear-gradient(90deg,#b9a8ff0a 1px,transparent 1px);background-size:120px 120px,120px 120px,24px 24px,24px 24px;background-position:calc(var(--t)*-5px) calc(var(--t)*-3px);-webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,#000 25%,transparent 82%)}
+.scene{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:150px 150px 110px}
+.bar{position:absolute;left:0;bottom:0;height:8px;width:calc(var(--t)/26*100%);background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3))}
+.mark{position:absolute;left:150px;top:68px;font:500 21px "JetBrains Mono";letter-spacing:.24em;text-transform:uppercase;color:#b4b1cb}
+.count{position:absolute;right:150px;top:68px;font:500 21px "JetBrains Mono";letter-spacing:.14em;color:#a7a4bd}
+.a{animation-duration:calc(var(--d,.9)*1s);animation-delay:calc((var(--s) - var(--t))*1s);animation-fill-mode:both;animation-play-state:paused;animation-timing-function:cubic-bezier(.22,1,.36,1)}
+.rise{animation-name:rise}.pop{animation-name:pop}.wipe{animation-name:wipe}.fade{animation-name:fade}.draw{animation-name:draw;animation-timing-function:cubic-bezier(.6,0,.3,1)}.grow{animation-name:grow}
+@keyframes rise{from{opacity:0;transform:translateY(70px);filter:blur(14px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes pop{from{opacity:0;transform:perspective(1600px) rotateY(-40deg) scale(.8)}to{opacity:1;transform:perspective(1600px) rotateY(-14deg) rotateZ(-2deg)}}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes grow{from{opacity:0;transform:translateY(60px) scaleX(.6)}to{opacity:1;transform:none}}
+.eyebrow{font:500 24px "JetBrains Mono";letter-spacing:.2em;text-transform:uppercase;color:#b9a8ff;margin-bottom:38px;display:flex;align-items:center;gap:18px}
+.eyebrow::before{content:"";width:54px;height:3px;background:var(--grad)}
+h1{font-size:150px;line-height:.97;letter-spacing:-.055em;font-weight:700}
+h2{font-size:96px;line-height:1.04;letter-spacing:-.045em;font-weight:600;max-width:15em}
+.quote{font-size:122px;line-height:1.04;letter-spacing:-.05em;font-weight:600;max-width:12.5em}
+.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.sub{font-size:42px;line-height:1.3;color:#c9c6dd;font-weight:500;letter-spacing:-.02em;margin-top:40px;max-width:21em}
+.cite{font:500 24px "JetBrains Mono";letter-spacing:.16em;text-transform:uppercase;color:#a7a4bd;margin-top:46px}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:90px;align-items:center}
+svg.plan{width:640px;height:680px;justify-self:center;overflow:visible}
+svg.plan path,svg.plan circle{fill:none;stroke:#b9a8ff;stroke-width:2.2;stroke-dasharray:1;stroke-linecap:round}
+svg.plan .thin{stroke:#b9a8ff66;stroke-width:1.1}
+.stack{display:flex;flex-direction:column-reverse;gap:14px;width:900px}
+.layer{display:grid;grid-template-columns:70px 300px 1fr;column-gap:20px;align-items:center;padding:24px 34px;border:2px solid #ffffff26;border-radius:22px;background:#15132880;transform-origin:50% 100%}
+.layer span{font:500 22px "JetBrains Mono";color:#b9a8ff}.layer b{font-size:44px;letter-spacing:-.03em;font-weight:600}.layer i{font-style:normal;font-size:27px;color:#c9c6dd}
+.layer:last-child{border-color:transparent;background:linear-gradient(100deg,#5b3ff0,#a23df0 55%,#2b6cf3)}.layer:last-child span,.layer:last-child i{color:#fff}
+.pencil{width:760px;margin-top:50px;overflow:visible}.pencil path{fill:none;stroke:url(#pg);stroke-width:5;stroke-linecap:round;stroke-dasharray:1}
+.book{justify-self:center;width:430px;border-radius:12px;box-shadow:0 70px 160px -30px #6d4dffc0,40px 30px 80px -20px #000,0 0 0 2px #ffffff22}
+.url{margin-top:50px;font:500 32px "JetBrains Mono";letter-spacing:.06em;color:#b9a8ff}
+.chip{display:inline-block;margin-top:44px;padding:16px 30px;border:2px solid #ffffff30;border-radius:999px;background:#ffffff12;font-size:30px;font-weight:500}
+</style></head><body>
+<div class="orb o1"></div><div class="orb o2"></div><div class="grid"></div>
+<div class="mark">The Subconscious Architect</div><div class="count" id="count"></div>
+
+<section class="scene" data-s="0" data-e="3.7">
+  <p class="quote a rise" style="--s:.3;--d:1.1" data-k="q1"></p>
+  <p class="sub a rise" style="--s:1.7" data-k="q1after"></p>
+</section>
+
+<section class="scene" data-s="3.7" data-e="7.6">
+  <p class="eyebrow a rise" style="--s:3.8" data-k="s2eye"></p>
+  <h2 class="a rise" style="--s:4;--d:1.1"><span data-k="s2a"></span> <span class="g" data-k="s2b"></span></h2>
+</section>
+
+<section class="scene" data-s="7.6" data-e="11.2"><div class="two">
+  <div><p class="eyebrow a rise" style="--s:7.7" data-k="s3eye"></p><h2 class="a rise" style="--s:7.9;font-size:108px" data-k="s3"></h2><p class="sub a rise" style="--s:8.6" data-k="s3sub"></p></div>
+  <svg class="plan" viewBox="0 0 320 340">
+    <circle class="thin a draw" style="--s:7.8;--d:2.4" pathLength="1" cx="160" cy="170" r="150"/>
+    <path class="thin a draw" style="--s:7.9;--d:2" pathLength="1" d="M12 40H308M12 300H308M40 12V328M280 12V328"/>
+    <path class="a draw" style="--s:8.1;--d:1.6" pathLength="1" d="M40 40H280V300H40Z"/>
+    <path class="a draw" style="--s:8.6;--d:1.2" pathLength="1" d="M40 250H280"/>
+    <path class="a draw" style="--s:8.9;--d:1.2" pathLength="1" d="M150 40V230M40 150H150M170 40V230M170 180H280"/>
+    <path class="a draw" style="--s:9.3;--d:1.2" pathLength="1" d="M40 170H150M40 230H280M170 200H280"/>
+    <path class="a draw" style="--s:9.7;--d:1" pathLength="1" d="M150 150a40 40 0 0 1 40 40M210 250v-35a35 35 0 0 1 35 35"/>
+  </svg>
+</div></section>
+
+<section class="scene" data-s="11.2" data-e="18.2"><div class="two" style="grid-template-columns:.85fr 1.15fr">
+  <div><p class="eyebrow a rise" style="--s:11.3" data-k="s4eye"></p><h2 class="a rise" style="--s:11.5;font-size:112px"><span data-k="s4a"></span><br><span class="g" data-k="s4b"></span></h2><p class="sub a rise" style="--s:12.1" data-k="s4sub"></p></div>
+  <div class="stack">
+    <div class="layer a grow" style="--s:12.4;--d:.8"><span>01</span><b data-k="l1"></b><i data-k="d1"></i></div>
+    <div class="layer a grow" style="--s:13.4;--d:.8"><span>02</span><b data-k="l2"></b><i data-k="d2"></i></div>
+    <div class="layer a grow" style="--s:14.4;--d:.8"><span>03</span><b data-k="l3"></b><i data-k="d3"></i></div>
+    <div class="layer a grow" style="--s:15.4;--d:.8"><span>04</span><b data-k="l4"></b><i data-k="d4"></i></div>
+    <div class="layer a grow" style="--s:16.4;--d:.8"><span>05</span><b data-k="l5"></b><i data-k="d5"></i></div>
+  </div>
+</div></section>
+
+<section class="scene" data-s="18.2" data-e="22.4">
+  <p class="quote a rise" style="--s:18.3;--d:1.1;font-size:98px;max-width:14em"><span data-k="q2a"></span> <span class="g" data-k="q2b"></span></p>
+  <svg class="pencil" viewBox="0 0 760 40"><defs><linearGradient id="pg"><stop offset="0" stop-color="#a08aff"/><stop offset=".5" stop-color="#e58bff"/><stop offset="1" stop-color="#5fe0ff"/></linearGradient></defs><path class="a draw" style="--s:19.6;--d:1.5" pathLength="1" d="M4 22C120 4 190 38 300 20S520 6 756 22"/></svg>
+  <p class="cite a fade" style="--s:20" data-k="cite"></p>
+</section>
+
+<section class="scene" data-s="22.4" data-e="26.5"><div class="two" style="grid-template-columns:.8fr 1.2fr">
+  <img class="book a pop" style="--s:22.5;--d:1.2" src="../../public/assets/book_cover-1200.jpg">
+  <div><p class="eyebrow a rise" style="--s:22.8" data-k="s6eye"></p><h1 class="a rise" style="--s:23;font-size:128px">The Subconscious <span class="g">Architect</span></h1><span class="chip a rise" style="--s:23.7" data-k="s6chip"></span><p class="url a wipe" style="--s:24.3;--d:1.1">sindakhenine.com/book</p></div>
+</div></section>
+<div class="bar"></div>
+<script>
+const T={
+ en:{q1:"“You are good at your life.”",q1after:"And yet, something can still feel out of place.",s2eye:"The question behind the book",s2a:"Why do capable people keep repeating patterns they",s2b:"consciously want to change?",s3eye:"Look underneath",s3:"What lies beneath the life we know?",s3sub:"It begins with a house, and the things we never thought to question about it.",s4eye:"The central idea",s4a:"The Living",s4b:"Blueprint",s4sub:"Five connected layers, from what you were built on to the self you show the world.",l1:"Ground",d1:"What you were built on",l2:"Frame",d2:"Beliefs that hold the weight",l3:"Wiring",d3:"Emotional circuitry",l4:"Rooms",d4:"Patterns lived every day",l5:"Facade",d5:"The self shown outside",q2a:"“You never chose this house. But you are the only one who can",q2b:"hold the pencil now.”",cite:"Sinda Khenine · Introduction",s6eye:"A book by Sinda Khenine",s6chip:"Publication in preparation"},
+ de:{q1:"„Du hast dein Leben im Griff.“",q1after:"Und doch kann sich etwas fehl am Platz anfühlen.",s2eye:"Die Frage hinter dem Buch",s2a:"Warum wiederholen fähige Menschen immer wieder Muster, die sie",s2b:"bewusst ändern wollen?",s3eye:"Ein Blick darunter",s3:"Was liegt unter dem Leben, das wir kennen?",s3sub:"Es beginnt mit einem Haus und mit dem, was wir daran nie hinterfragt haben.",s4eye:"Die zentrale Idee",s4a:"Der Living",s4b:"Blueprint",s4sub:"Fünf verbundene Schichten: von dem, was dich geprägt hat, bis zu dem Selbst, das du nach außen zeigst.",l1:"Fundament",d1:"Was dich geprägt hat",l2:"Tragwerk",d2:"Überzeugungen, die dich tragen",l3:"Verkabelung",d3:"Emotionale Schaltkreise",l4:"Räume",d4:"Muster im Alltag",l5:"Fassade",d5:"Das Selbst nach außen",q2a:"„Du hast dir dieses Haus nicht ausgesucht. Aber nur du kannst jetzt",q2b:"den Stift in die Hand nehmen.“",cite:"Sinda Khenine · Einleitung",s6eye:"Ein Buch von Sinda Khenine",s6chip:"Veröffentlichung in Vorbereitung"},
+ fr:{q1:"« Vous savez mener votre vie. »",q1after:"Et pourtant, quelque chose peut encore sembler ne pas être à sa place.",s2eye:"La question à l’origine du livre",s2a:"Pourquoi les personnes capables continuent-elles de répéter des schémas qu’elles",s2b:"souhaitent consciemment changer ?",s3eye:"Regarder en dessous",s3:"Que se cache-t-il sous la vie que nous connaissons ?",s3sub:"Tout commence par une maison, et par ce que nous n’avons jamais pensé à remettre en question.",s4eye:"L’idée centrale",s4a:"Le Living",s4b:"Blueprint",s4sub:"Cinq couches reliées, de ce sur quoi vous vous êtes construit à ce que vous montrez au monde.",l1:"Fondations",d1:"Ce qui vous a construit",l2:"Ossature",d2:"Les convictions qui soutiennent",l3:"Câblage",d3:"Circuits émotionnels",l4:"Pièces",d4:"Les schémas du quotidien",l5:"Façade",d5:"Ce que vous montrez au monde",q2a:"« Vous n’avez pas choisi cette maison. Mais vous seul pouvez maintenant",q2b:"tenir le crayon. »",cite:"Sinda Khenine · Introduction",s6eye:"Un livre de Sinda Khenine",s6chip:"Parution en préparation"}
+};
+const lang=new URLSearchParams(location.search).get("lang")||"en";document.documentElement.lang=lang;
+document.querySelectorAll("[data-k]").forEach(el=>{el.textContent=T[lang][el.dataset.k]});
+const scenes=[...document.querySelectorAll(".scene")];
+window.render=t=>{
+  document.documentElement.style.setProperty("--t",t);
+  scenes.forEach((scene,i)=>{const s=+scene.dataset.s,e=+scene.dataset.e,on=t>=s&&t<e;scene.style.display=on?"flex":"none";
+    if(on){scene.style.opacity=Math.min(1,(e-t)/.4);scene.style.transform=`scale(${1+Math.max(0,.4-(e-t))*.12})`;document.getElementById("count").textContent=`0${i+1} / 0${scenes.length}`}});
+};
+render(+(new URLSearchParams(location.search).get("t")||0));
+</script></body></html>

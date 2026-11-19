@@ -4,7 +4,7 @@ import {canonicalUrl, createPageMetadata, entityIds, serializeJsonLd} from "@/li
 import Image from "next/image";
 import {Link} from "@/i18n/navigation";
 import {Layers} from "@/components/Layers";
-import {MediaVideo} from "@/components/MediaVideo";
+import {IntroReel} from "@/components/IntroReel";
 import {BookFeature} from "@/components/book/BookFeature";
 
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}) { const {locale} = await params; return createPageMetadata("/book", {title: "The Subconscious Architect", description: "The book by Sinda Khenine: a Living Blueprint for understanding the hidden structures that shape how we think, decide, build relationships, and live.", image: "/assets/book_cover.jpg"}, locale); }
@@ -18,11 +18,11 @@ const journey=[
 ];
 
 export default async function Book({params}: {params: Promise<{locale: string}>}){
-  const {locale} = await params; setRequestLocale(locale); const copy = getCopy(locale);
+  const {locale} = await params; setRequestLocale(locale); const copy = getCopy(locale); const reel = locale === "de" || locale === "fr" ? locale : "en";
 const schema={"@context":"https://schema.org","@type":"Book",name:"The Subconscious Architect","@id":canonicalUrl("/book#book"),url:canonicalUrl("/book"),author:{"@id":entityIds.person,"@type":"Person",name:"Sinda Khenine"},abstract:"A Living Blueprint for understanding the hidden structures that shape how we think, decide, build relationships, and live."};return <>
   <BookFeature locale={locale} standalone/>
 
-  <section className="ink-section book-video-section book-teaser-prominent"><div className="wide-shell"><div className="section-head"><div><p className="eyebrow">{copy("Book teaser")}</p><h2>{copy("Enter the blueprint.")}</h2></div><p>{copy("A brief visual introduction to the house, its hidden structure, and the possibility of drawing differently.")}</p></div><MediaVideo src="/assets/book_teaser.mp4" poster="/assets/book-teaser-poster.jpg" label={copy("Teaser for The Subconscious Architect")}/></div></section>
+  <section className="ink-section book-video-section book-teaser-prominent"><div className="wide-shell"><div className="section-head"><div><p className="eyebrow">{copy("Book teaser")}</p><h2>{copy("Enter the blueprint.")}</h2></div><p>{copy("A brief visual introduction to the house, its hidden structure, and the possibility of drawing differently.")}</p></div><IntroReel src={`/media/book/book-reel-${reel}.mp4`} poster={`/media/book/book-reel-${reel}-poster.jpg`} label={copy("Teaser for The Subconscious Architect")}/></div></section>
 
   <section className="book-question-section"><div className="shell book-question-layout"><div className="book-cover-echo" aria-hidden="true"><Image src="/assets/book_cover-720.jpg" alt={copy("")} width={720} height={1152}/><span>{copy("What lies beneath the life we know?")}</span></div><div><p className="eyebrow">{copy("The question that inspired the book")}</p><h2>{copy("Why do capable people keep repeating patterns they consciously want to change?")}</h2><p>{copy("The book begins beneath visible behavior, where old protection, inherited beliefs, and familiar roles can continue shaping a life long after their origins are forgotten.")}</p></div></div></section>
 
