@@ -1,5 +1,7 @@
 import type {Metadata} from "next";
 import "../globals.css";
+import "../aurora.css";
+import {Inter, JetBrains_Mono, Space_Grotesk} from "next/font/google";
 import {NextIntlClientProvider, hasLocale} from "next-intl";
 import {setRequestLocale} from "next-intl/server";
 import {notFound} from "next/navigation";
@@ -11,8 +13,13 @@ import {Analytics} from "@vercel/analytics/next";
 import {Header} from "@/components/Header";
 import {Footer} from "@/components/Footer";
 import {PageMotion} from "@/components/PageMotion";
+import {SiteFx} from "@/components/SiteFx";
 import {siteConfig} from "@/content/site/config";
 import {createPageMetadata, identityGraph, serializeJsonLd} from "@/lib/seo";
+
+const display = Space_Grotesk({subsets: ["latin"], variable: "--font-display", display: "swap"});
+const body = Inter({subsets: ["latin"], variable: "--font-body", display: "swap"});
+const mono = JetBrains_Mono({subsets: ["latin"], variable: "--font-mono", display: "swap", weight: ["400", "500"]});
 
 export const metadata: Metadata = {
   ...createPageMetadata("/", {title: siteConfig.title, description: siteConfig.description}),
@@ -27,11 +34,12 @@ export default async function RootLayout({children, params}: {children: React.Re
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const t = getCopy(locale);
-  return <html lang={locale} data-scroll-behavior="smooth" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html: themeScript}}/></head><body><NextIntlClientProvider locale={locale} messages={{copy: clientMessages(getCopyMessages(locale))}}>
+  return <html lang={locale} className={`${display.variable} ${body.variable} ${mono.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html: themeScript}}/></head><body><NextIntlClientProvider locale={locale} messages={{copy: clientMessages(getCopyMessages(locale))}}>
     <a className="skip-link" href="#main">{t("Skip to content")}</a>
     <Header/>
     <main id="main">{children}</main>
     <PageMotion/>
+    <SiteFx/>
     <Footer/>
     <Analytics/>
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html: serializeJsonLd({...identityGraph, "@graph": identityGraph["@graph"].map(entity => entity["@type"] === "WebSite" ? {...entity, inLanguage: ["en", "de", "fr"]} : entity)})}}/>

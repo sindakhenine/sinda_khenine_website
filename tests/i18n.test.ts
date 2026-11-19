@@ -24,7 +24,7 @@ describe("multilingual public website", () => {
     expect(localizedPath("/about", "de")).toBe("/de/about");
     expect(localizedPath("/de/about?ref=book#story", "fr")).toBe("/fr/about?ref=book#story");
     expect(localizedPath("/fr", "en")).toBe("/");
-    for (const href of ["/BingSiteAuth.xml", "/Sinda_Khenine_Resume.pdf", "/sitemap.xml", "/api/contact", "#demo", "https://skatalystai.com", "mailto:founder@skatalystai.com", "//example.com"]) expect(localizedPath(href, "fr")).toBe(href);
+    for (const href of ["/BingSiteAuth.xml", "/Sinda_Khenine_Resume.pdf", "/Sinda_Khenine_Lebenslauf.pdf", "/Sinda_Khenine_CV.pdf", "/sitemap.xml", "/api/contact", "#demo", "https://skatalystai.com", "mailto:founder@skatalystai.com", "//example.com"]) expect(localizedPath(href, "fr")).toBe(href);
   });
   it("preserves inline spacing and non-text values", () => {
     const copy = createCopy({[copyKey("Hello")]: "Bonjour"}, "fr");

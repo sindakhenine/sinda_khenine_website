@@ -50,7 +50,7 @@ export const identityGraph = {
       image: canonicalUrl("/assets/about/sinda-portrait-personal.jpg"),
       jobTitle: siteConfig.headline,
       description: siteConfig.description,
-      sameAs: [siteConfig.social.linkedin, siteConfig.social.x],
+      sameAs: [siteConfig.social.linkedin, siteConfig.social.x, siteConfig.social.github],
       worksFor: {"@id": entityIds.organization},
       mainEntityOfPage: {"@id": entityIds.profile},
       knowsAbout: ["AI orchestration", "AI agent systems", "Context engineering", "Frontier AI coding agents", "Data engineering", "Business intelligence", "Machine learning"],
