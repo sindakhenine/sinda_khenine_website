@@ -10,7 +10,7 @@ export function FistbumpFeature({locale,detail=false}:{locale:string;detail?:boo
   const campaign=getFistbumpCampaign(locale);
   const Heading=detail ? "h1" : "h2";
   const learnContent=<><span className={styles.pathNumber}>02</span><span><strong>{t.learn}</strong><small>{t.learnShort}</small></span><span aria-hidden="true">↗</span></>;
-  return <section id="fistbump" className={styles.feature} aria-labelledby="fistbump-title"><div className="shell">
+  return <section id="fistbump" className={detail ? styles.feature : `${styles.feature} ${styles.site}`} aria-labelledby="fistbump-title"><div className="shell">
     <div className={styles.topline}><span>{t.label}</span><span className={styles.live}><i/>{t.live}</span></div>
     <div className={styles.featureGrid}>
       <div className={styles.featureCopy}>
